@@ -137,7 +137,10 @@ window.YADEA_RENDER = (() => {
   const palcoDe = (m) => (HEX_VALIDO.test(m.palco || '') ? m.palco : '#ECEAE7');
 
   /* Card do styleguide (seção 07): palco com a foto e os selos legais →
-     tags em laranja → nome → 3 números → Comprar + "+ Detalhes". */
+     tags em laranja → nome → 3 números → Comprar + "+ Detalhes".
+     Nos botões, o texto oculto fica DENTRO do rótulo: solto, virava um item
+     a mais do flex e ganhava o gap, descentralizando o botão.
+     Regra do projeto: nenhum comentário dentro do HTML gerado. */
   function card(m) {
     const bloco = numeros(m) || `
         <p class="card__pendente"><strong>Ficha técnica sob consulta</strong>
@@ -161,8 +164,6 @@ window.YADEA_RENDER = (() => {
               ${bloco}
               ${preco(m, 'card__preco')}
               <div class="card__acoes">
-                <!-- O texto oculto fica DENTRO do rótulo: solto, virava um item
-                     a mais do flex e ganhava o gap, descentralizando o botão. -->
                 <a class="btn btn--primario btn--card" href="${linkWhats('modelo', { modelo: m.nome })}" target="_blank" rel="noopener">${ICONE_WHATS}<span>Comprar<span class="u-visually-hidden"> a ${escapar(m.nome)} pelo WhatsApp</span></span></a>
                 <a class="btn btn--contorno btn--card" href="${urlModelo(m)}" data-detalhes="${escapar(m.id)}"><span>+ Detalhes<span class="u-visually-hidden"> da ${escapar(m.nome)}</span></span></a>
               </div>

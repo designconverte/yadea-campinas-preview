@@ -6,20 +6,18 @@
 <title>Política de Privacidade · YADEA Campinas</title>
 <meta name="description" content="Como a YADEA Campinas coleta, usa e protege os dados de quem visita o site. Cookies, medição de anúncios e seus direitos pela LGPD.">
 <meta name="theme-color" content="#171717">
-<meta name="robots" content="noindex, nofollow"><!-- prévia de aprovação: não indexar -->
+<meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://yadeacampinas.com/privacidade.html">
 
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="assets/img/brand/icone-app-laranja.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/yadea.css?v=1.0.2">
+<link rel="stylesheet" href="assets/css/yadea.css?v=1.0.3">
 
-<script src="assets/js/consent.js?v=1.0.2"></script>
+<script src="assets/js/consent.js?v=1.0.3"></script>
 
 <style>
-  /* Estilos só desta página: o yadea.css é feito para a landing, que não tem
-     texto corrido longo. */
   .legal { padding: calc(var(--yd-header) + var(--sp-12)) 0 var(--sp-16); }
   .legal__cabeca { display: grid; gap: var(--sp-4); max-width: 62ch; margin-bottom: var(--sp-12); }
   .legal__cabeca h1 { font-size: clamp(28px, 3.6vw, 44px); }
@@ -61,7 +59,6 @@
 
     <div class="legal__cabeca">
       <h1 class="t-h2">Política de Privacidade</h1>
-            <!-- PENDENTE: ajustar a data para o dia em que o site for publicado. -->
       <p class="legal__data">Última atualização: 6 de novembro de 2026</p>
     </div>
 
@@ -226,10 +223,8 @@
   </div>
 </div>
 
-<script src="assets/js/config.js?v=1.0.2"></script>
+<script src="assets/js/config.js?v=1.0.3"></script>
 <script>
-  /* O app.js não entra aqui: ele monta vitrine, modal e mapa, que esta página
-     não tem. O que ela precisa são só os dados da loja no HTML. */
   (function () {
     var cfg = window.YADEA_CONFIG;
     var pegar = function (caminho) {
@@ -238,7 +233,6 @@
     document.querySelectorAll('[data-config]').forEach(function (el) {
       el.textContent = pegar(el.dataset.config) || '';
     });
-    // Rede sem endereço no config some (link para "#" é promessa quebrada).
     document.querySelectorAll('[data-config-href]').forEach(function (el) {
       var url = pegar(el.dataset.configHref);
       if (url) el.href = url; else el.remove();
