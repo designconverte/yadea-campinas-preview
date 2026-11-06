@@ -15,8 +15,8 @@
    Peso e carga máxima: nenhuma fonte publica, então não aparecem.
    Campo sem fonte não aparece. Divergência vai comentada e no README.
 
-   PREÇO fica fora (styleguide: "preço fica fora até a loja aprovar"): o card
-   e o modal levam ao WhatsApp. Para ligar, ver README, "Preço".
+   PREÇO: aprovado e enviado pela loja em 06/11/2026 (WhatsApp), todos à
+   vista no PIX, com a parcela no cartão. Ver YADEA_CAMPANHA, logo abaixo.
 
    TEXTOS COM A LOJA E A CIDADE vêm do config.js (LOJA, CIDADE): o mesmo
    catálogo serve às outras unidades sem reescrever o FAQ.
@@ -110,15 +110,28 @@ const faixa = (de, ate) => Array.from({ length: ate - de + 1 }, (_, i) => de + i
 const GARANTIA = '2 anos na bateria, 2 anos no motor e 1 ano nos componentes elétricos';
 const CARREGADOR = 'Bivolt automático, 110 V e 220 V';
 
+/* ── Preço e campanha (loja, 06/11/2026) ──────────────────────────────────
+   "Esses valores são todos à vista PIX". Em cada modelo: `valor` = preço
+   cheio, `promo` = preço da campanha, `parcelas` = como a loja mandou
+   (21x de R$ 441,28, com juros: 21 × 441,28 = R$ 9.266,88 sobre os R$ 7.900
+   cheios). GFX6 e Keeness não entraram na Black. A Keeness veio sem parcela.
+   Fim da campanha: `ativa: false` e rodar o build; o preço cheio volta
+   sozinho no card, no modal, nas páginas e no JSON-LD. */
+window.YADEA_PAGAMENTO = { aVista: 'PIX' };
+window.YADEA_CAMPANHA = { nome: 'Black November', ativa: true };
+const PARCELA_21X = (parcela, extra = {}) => ({ vezes: 21, parcela, juros: true, ...extra });
+
 /* Ordem da vitrine (styleguide, seção 07). */
 window.YADEA_ORDEM = ['owin', 'dt3', 'm6-h', 'gfx6', 'keeness', 'gb60'];
 
 /* Nomes das cores: nem o site atual nem o fabricante dão nome às cores (o
-   yadea.com.br só publica a amostra em hex). Keeness e GFX6 têm amostras
-   nomeadas no material da loja; as demais são DESCRITIVAS, do que a foto
-   mostra — confirmar com a loja (README). Hex = amostra oficial do
-   yadea.com.br quando existe. `palco` = tom do card/modal para aquela cor,
-   tirado da carroceria (styleguide: saturação baixa, nunca inventado). */
+   yadea.com.br só publica a amostra em hex). Owin, M6-H e GFX6 com os nomes
+   corrigidos pela loja (06/11/2026); GFX6 também no folheto oficial (Laranja,
+   Branco, Verde, Preto). Keeness com as amostras nomeadas no material da
+   loja; DT3 e GB60 continuam DESCRITIVAS, do que a foto mostra. Hex =
+   amostra oficial do yadea.com.br quando existe. `palco` = tom do
+   card/modal para aquela cor, tirado da carroceria (styleguide: saturação
+   baixa, nunca inventado). */
 const MODELOS = [
   {
     id: 'owin',
@@ -131,8 +144,8 @@ const MODELOS = [
     categorias: ['autopropelido'],
     classificacao: 'autopropelido',
     foto: 'assets/img/models/owin-card.webp',
-    alt: 'Scooter elétrica YADEA Owin azul-acinzentada com banco vinho',
-    preco: null,
+    alt: 'Scooter elétrica YADEA Owin cinza com banco vinho',
+    preco: { valor: 13900, promo: 9900, parcelas: PARCELA_21X(776.43, { cartoes: 'Visa ou Mastercard' }) },
     specs: {
       velocidade: { valor: 32, unidade: 'km/h' },
       potencia: { valor: 1000, unidade: 'W', nota: 'Motor no cubo da roda, 90% de eficiência.' },
@@ -152,13 +165,15 @@ const MODELOS = [
       garantia: GARANTIA,
     },
     equipamentos: ['Bateria removível: carrega em casa ou no trabalho', 'Controle de cruzeiro, ré com um toque e modos ECO e SPORT', 'Farol de 28.000 cd, com 70 m de alcance', 'Assoalho com 320 mm de extensão para os pés', 'Baú de 15 litros sob o banco'],
+    /* 3 cores (loja, 06/11/2026), com os renders que ela nomeou. Verde e
+       vermelha batem com a amostra oficial; a cinza fica entre as duas
+       amostras cinzentas do fabricante, então o hex é o medido no render. */
     cores: [
-      { nome: 'Azul-acinzentada', hex: '#8FA4B5', palco: '#8FA4B5', galeria: fotos('owin', 1) },
-      { nome: 'Verde-menta', hex: '#B5CBC2', palco: '#A9C7BA', galeria: fotos('owin', 2) },
-      { nome: 'Verde-petróleo', hex: '#55696B', palco: '#7E9896', galeria: fotos('owin', 3) },
-      { nome: 'Vermelha', hex: '#BC010E', palco: '#B98A86', galeria: fotos('owin', 4) },
+      { nome: 'Cinza', hex: '#6F7A7E', palco: '#9AA5A9', galeria: fotos('owin', 1) },
+      { nome: 'Verde', hex: '#B5CBC2', palco: '#A9C7BA', galeria: fotos('owin', 2, 3) },
+      { nome: 'Vermelha', hex: '#BC010E', palco: '#B98A86', galeria: fotos('owin', 4, 5, 6, 7) },
     ],
-    galeria: detalhes('owin', ...faixa(5, 10)),
+    galeria: detalhes('owin', ...faixa(8, 14)),
   },
   {
     id: 'dt3',
@@ -172,7 +187,7 @@ const MODELOS = [
     classificacao: 'autopropelido',
     foto: 'assets/img/models/dt3-card.webp',
     alt: 'Scooter elétrica YADEA DT3 branca com baú traseiro',
-    preco: null,
+    preco: { valor: 9900, promo: 7900, parcelas: PARCELA_21X(553) },
     specs: {
       velocidade: { valor: 32, unidade: 'km/h' },
       potencia: { valor: 1000, unidade: 'W', nota: 'Motor no cubo da roda.' },
@@ -209,7 +224,7 @@ const MODELOS = [
     classificacao: 'autopropelido',
     foto: 'assets/img/models/m6-h-card.webp',
     alt: 'Scooter elétrica YADEA M6-H creme com banco marrom',
-    preco: null,
+    preco: { valor: 10900, promo: 9900, parcelas: PARCELA_21X(608.85) },
     specs: {
       velocidade: { valor: 32, unidade: 'km/h', nota: 'Dois modos: 25 e 32 km/h.' },
       potencia: { valor: 1000, unidade: 'W', nota: 'Motor no cubo da roda.' },
@@ -232,8 +247,9 @@ const MODELOS = [
     equipamentos: ['Bateria removível de lítio-ferro-fosfato', 'Suspensão hidráulica na frente e atrás', 'USB de carga rápida de 15 W', 'Descanso lateral de design estável', 'Baú traseiro de 29 litros opcional'],
     cores: [
       { nome: 'Creme', hex: '#DCD0BA', palco: '#C8B49C', galeria: fotos('m6-h', 1, 4) },
-      { nome: 'Cinza', hex: '#938A81', palco: '#B3ADA5', galeria: fotos('m6-h', 2) },
-      { nome: 'Lilás', hex: '#7D7D8E', palco: '#A3A6BF', galeria: fotos('m6-h', 3) },
+      // Nomes corrigidos pela loja (06/11/2026): era "Cinza" e "Lilás".
+      { nome: 'Marrom', hex: '#938A81', palco: '#B5AA9C', galeria: fotos('m6-h', 2) },
+      { nome: 'Prata', hex: '#7D7D8E', palco: '#AFB2B8', galeria: fotos('m6-h', 3) },
     ],
     galeria: detalhes('m6-h', ...faixa(5, 10)),
   },
@@ -249,13 +265,15 @@ const MODELOS = [
     classificacao: 'autopropelido',
     foto: 'assets/img/models/gfx6-card.webp',
     alt: 'Scooter elétrica YADEA GFX6 laranja e branca',
-    preco: null,
+    preco: { valor: 12900, parcelas: PARCELA_21X(720.57) },
     specs: {
       // A versão em inglês do mesmo site diz 30 km/h; vale a em português (e o site atual).
       velocidade: { valor: 32, unidade: 'km/h' },
       potencia: { valor: 1000, unidade: 'W', nota: 'Motor no cubo da roda, pico de 2.600 W.' },
       autonomia: { valor: 68, unidade: 'km' },
-      bateria: 'Lítio-ferro-fosfato (LFP) removível, 60 V 30 Ah',
+      // Torque e ciclos: folheto oficial GFX6-PT (material da loja, 06/11/2026).
+      torque: '125 N·m',
+      bateria: 'Lítio-ferro-fosfato (LFP) removível, 60 V 30 Ah, 1.500 ciclos de recarga',
       recarga: '5 horas',
       carregador: CARREGADOR,
       freios: 'Disco nas duas rodas: 170 mm na frente, 180 mm atrás',
@@ -270,13 +288,16 @@ const MODELOS = [
       garantia: GARANTIA,
     },
     equipamentos: ['Controle de descida (HDC) e de tração (TCS)', 'Controle de cruzeiro e ré com um toque', 'Painel LED de tela cheia', 'Farol LED de 4 lentes', 'Freios a disco nas duas rodas'],
+    /* Nomes do folheto oficial. A preta: a amostra do fabricante (#414141)
+       e o palco cinza faziam ela parecer cinza (loja, 06/11/2026); a amostra
+       agora é o tom medido no render. */
     cores: [
-      { nome: 'Laranja e branca', bicolor: ['#FD9D07', '#F1F1F1'], palco: '#F08A55', galeria: fotos('gfx6', 1, 5) },
-      { nome: 'Cinza-escura', hex: '#414141', palco: '#8E8E8E', galeria: fotos('gfx6', 2) },
-      { nome: 'Verde', hex: '#828873', palco: '#A3AB8E', galeria: fotos('gfx6', 3) },
-      { nome: 'Branca', hex: '#F1F1F1', palco: '#C9CCD0', galeria: fotos('gfx6', 4) },
+      { nome: 'Laranja', bicolor: ['#FD9D07', '#F1F1F1'], palco: '#F08A55', galeria: fotos('gfx6', 1, 2, 3, 4) },
+      { nome: 'Preta', hex: '#262828', palco: '#6E7276', galeria: fotos('gfx6', 5, 6) },
+      { nome: 'Verde', hex: '#828873', palco: '#A3AB8E', galeria: fotos('gfx6', 7) },
+      { nome: 'Branca', hex: '#F1F1F1', palco: '#C9CCD0', galeria: fotos('gfx6', 8) },
     ],
-    galeria: detalhes('gfx6', ...faixa(6, 11)),
+    galeria: detalhes('gfx6', ...faixa(9, 19)),
   },
   {
     id: 'keeness',
@@ -290,7 +311,7 @@ const MODELOS = [
     classificacao: 'motocicleta',
     foto: 'assets/img/models/keeness-card.webp',
     alt: 'Moto elétrica YADEA Keeness cinza com detalhes verde-petróleo',
-    preco: null,
+    preco: { valor: 28900 },
     /* POTÊNCIA: o site atual dizia 7000 W; o fabricante (yadea.com.br,
        06/11/2026) diz 5500 W nominal e 11000 W de pico. Vale o fabricante:
        anunciar potência acima da oficial é risco ao consumidor. A loja
@@ -315,11 +336,11 @@ const MODELOS = [
     },
     equipamentos: ['Vencedora do prêmio Red Dot', 'Motor central com pico de 11.000 W e 300 N·m', 'Duas baterias removíveis de 72 V', 'Recuperação de energia na frenagem', 'Painel LED de 5" e entrada USB'],
     cores: [
-      { nome: 'Cinza', hex: '#454545', palco: '#5F7B78', galeria: fotos('keeness', 1) },
+      { nome: 'Cinza', hex: '#454545', palco: '#5F7B78', galeria: fotos('keeness', 1, 5, 6, 7) },
       { nome: 'Branca', hex: '#FFFFFF', palco: '#AEB4B8', galeria: fotos('keeness', 2, 4) },
       { nome: 'Preta', hex: '#000000', palco: '#6E7276', galeria: fotos('keeness', 3) },
     ],
-    galeria: detalhes('keeness', ...faixa(5, 13)),
+    galeria: detalhes('keeness', ...faixa(8, 16)),
   },
   {
     id: 'gb60',
@@ -333,7 +354,7 @@ const MODELOS = [
     classificacao: 'autopropelido',
     foto: 'assets/img/models/gb60-card.webp',
     alt: 'Scooter elétrica YADEA GB60 preta com quadro dourado e cesta dianteira',
-    preco: null,
+    preco: { valor: 7900, promo: 6900, parcelas: PARCELA_21X(441.28) },
     specs: {
       velocidade: { valor: 32, unidade: 'km/h' },
       potencia: { valor: 800, unidade: 'W', nota: 'Motor no cubo da roda.' },

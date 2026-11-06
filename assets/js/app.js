@@ -56,8 +56,8 @@
       item_name: nomeCompleto(modelo),
       item_brand: modelo.fabricante || undefined,
       item_category: categoriasDe(modelo)[0],
-      value: modelo.preco?.valor || undefined,
-      currency: modelo.preco?.valor ? 'BRL' : undefined,
+      value: R.precoDe(modelo)?.valor,
+      currency: R.precoDe(modelo) ? 'BRL' : undefined,
       ...extras,
     };
     emitir('generate_lead', dados);
@@ -608,6 +608,11 @@
        tools/gerar-seo.js). Sem fechar, sem travar a rolagem, sem setas e sem
        mexer no endereço; galeria, cores, zoom e WhatsApp iguais. */
     const naPagina = Boolean(raiz?.classList.contains('modal--pagina'));
+    /* No celular a caixa inteira rola (galeria, ficha) com a base presa
+       embaixo (CSS, max-width 900px): o Lenis precisa deixar a rolagem
+       nativa acontecer em qualquer ponto do modal, não só no miolo. */
+    if (raiz && !naPagina) raiz.setAttribute('data-lenis-prevent', '');
+    const caixa = raiz?.querySelector('.modal__caixa');
     let origem = null;
     let atual = null;
     let corAtiva = 0;
@@ -824,14 +829,15 @@
       cta();
       if (!naPagina) setas();
       $('#modal-corpo').scrollTop = 0;
+      if (caixa && !naPagina) caixa.scrollTop = 0;
 
       emitir('view_item', {
         item_id: atual.id,
         item_name: nomeCompleto(atual),
         item_brand: atual.fabricante || undefined,
         item_category: categoriasDe(atual)[0],
-        value: atual.preco?.valor || undefined,
-        currency: atual.preco?.valor ? 'BRL' : undefined,
+        value: R.precoDe(atual)?.valor,
+        currency: R.precoDe(atual) ? 'BRL' : undefined,
         origem: naPagina ? 'pagina' : 'modal',
       });
 

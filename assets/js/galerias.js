@@ -5,42 +5,69 @@ window.YADEA_GALERIAS = {
   {
    "src": "assets/img/models/owin-01.webp",
    "mini": "assets/img/models/owin-01-mini.webp",
-   "alt": "Scooter elétrica YADEA Owin azul-acinzentada em três quartos, em estúdio",
-   "w": 1146,
-   "h": 808,
-   "fundo": "#FFFFFF",
+   "alt": "Scooter elétrica YADEA Owin cinza de perfil, com baú traseiro",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
    "estudio": true
   },
   {
    "src": "assets/img/models/owin-02.webp",
    "mini": "assets/img/models/owin-02-mini.webp",
-   "alt": "YADEA Owin verde-menta de perfil, em estúdio",
-   "w": 1146,
-   "h": 808,
-   "fundo": "#FFFFFF",
+   "alt": "YADEA Owin verde de perfil, com baú traseiro",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
    "estudio": true
   },
   {
    "src": "assets/img/models/owin-03.webp",
    "mini": "assets/img/models/owin-03-mini.webp",
-   "alt": "YADEA Owin verde-petróleo em três quartos, em estúdio",
-   "w": 1146,
-   "h": 808,
-   "fundo": "#FFFFFF",
+   "alt": "YADEA Owin verde em três quartos frontal",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
    "estudio": true
   },
   {
    "src": "assets/img/models/owin-04.webp",
    "mini": "assets/img/models/owin-04-mini.webp",
-   "alt": "YADEA Owin vermelha de perfil, em estúdio",
-   "w": 1146,
-   "h": 808,
-   "fundo": "#FFFFFF",
+   "alt": "YADEA Owin vermelha de perfil, com baú traseiro",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
    "estudio": true
   },
   {
    "src": "assets/img/models/owin-05.webp",
    "mini": "assets/img/models/owin-05-mini.webp",
+   "alt": "YADEA Owin vermelha em três quartos frontal",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
+   "estudio": true
+  },
+  {
+   "src": "assets/img/models/owin-06.webp",
+   "mini": "assets/img/models/owin-06-mini.webp",
+   "alt": "YADEA Owin vermelha em três quartos traseira",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
+   "estudio": true
+  },
+  {
+   "src": "assets/img/models/owin-07.webp",
+   "mini": "assets/img/models/owin-07-mini.webp",
+   "alt": "YADEA Owin vermelha de frente",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
+   "estudio": true
+  },
+  {
+   "src": "assets/img/models/owin-08.webp",
+   "mini": "assets/img/models/owin-08-mini.webp",
    "alt": "Farol redondo da Owin: uma obra-prima de elegância e charme clássicos",
    "w": 1146,
    "h": 808,
@@ -48,8 +75,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/owin-06.webp",
-   "mini": "assets/img/models/owin-06-mini.webp",
+   "src": "assets/img/models/owin-09.webp",
+   "mini": "assets/img/models/owin-09-mini.webp",
    "alt": "Bateria LFP removível de 60 V 30 Ah da Owin",
    "w": 1146,
    "h": 808,
@@ -57,17 +84,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/owin-07.webp",
-   "mini": "assets/img/models/owin-07-mini.webp",
-   "alt": "Lateral traseira da Owin com o logotipo e o símbolo YADEA",
-   "w": 1146,
-   "h": 808,
-   "fundo": "#797476",
-   "estudio": false
-  },
-  {
-   "src": "assets/img/models/owin-08.webp",
-   "mini": "assets/img/models/owin-08-mini.webp",
+   "src": "assets/img/models/owin-10.webp",
+   "mini": "assets/img/models/owin-10-mini.webp",
    "alt": "Assento de 640 mm da Owin",
    "w": 1146,
    "h": 808,
@@ -75,8 +93,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/owin-09.webp",
-   "mini": "assets/img/models/owin-09-mini.webp",
+   "src": "assets/img/models/owin-11.webp",
+   "mini": "assets/img/models/owin-11-mini.webp",
    "alt": "Assoalho da Owin com extensão de 320 mm para os pés",
    "w": 1146,
    "h": 808,
@@ -84,13 +102,31 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/owin-10.webp",
-   "mini": "assets/img/models/owin-10-mini.webp",
+   "src": "assets/img/models/owin-12.webp",
+   "mini": "assets/img/models/owin-12-mini.webp",
    "alt": "Baú de 15 litros sob o banco da Owin, com capacete dentro",
    "w": 1146,
    "h": 808,
    "fundo": "#CCCFD6",
    "estudio": true
+  },
+  {
+   "src": "assets/img/models/owin-13.webp",
+   "mini": "assets/img/models/owin-13-mini.webp",
+   "alt": "Traseira da Owin: motor no cubo da roda e cavalete central",
+   "w": 800,
+   "h": 1200,
+   "fundo": "#C29DA4",
+   "estudio": false
+  },
+  {
+   "src": "assets/img/models/owin-14.webp",
+   "mini": "assets/img/models/owin-14-mini.webp",
+   "alt": "Parte interna do escudo frontal da Owin, com a ignição",
+   "w": 800,
+   "h": 1200,
+   "fundo": "#E4CED6",
+   "estudio": false
   }
  ],
  "dt3": [
@@ -171,7 +207,7 @@ window.YADEA_GALERIAS = {
   {
    "src": "assets/img/models/m6-h-02.webp",
    "mini": "assets/img/models/m6-h-02-mini.webp",
-   "alt": "YADEA M6-H cinza com banco marrom, em três quartos",
+   "alt": "YADEA M6-H marrom com banco marrom, de perfil",
    "w": 1146,
    "h": 808,
    "fundo": "#FFFFFF",
@@ -180,7 +216,7 @@ window.YADEA_GALERIAS = {
   {
    "src": "assets/img/models/m6-h-03.webp",
    "mini": "assets/img/models/m6-h-03-mini.webp",
-   "alt": "YADEA M6-H lilás com banco preto, de perfil",
+   "alt": "YADEA M6-H prata com banco preto, de perfil",
    "w": 1146,
    "h": 808,
    "fundo": "#FFFFFF",
@@ -254,51 +290,123 @@ window.YADEA_GALERIAS = {
   {
    "src": "assets/img/models/gfx6-01.webp",
    "mini": "assets/img/models/gfx6-01-mini.webp",
-   "alt": "Scooter elétrica YADEA GFX6 laranja e branca, de perfil",
-   "w": 1146,
-   "h": 808,
-   "fundo": "#FFFFFF",
+   "alt": "Scooter elétrica YADEA GFX6 laranja, de perfil",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
    "estudio": true
   },
   {
    "src": "assets/img/models/gfx6-02.webp",
    "mini": "assets/img/models/gfx6-02-mini.webp",
-   "alt": "YADEA GFX6 preta, de perfil",
-   "w": 1146,
-   "h": 808,
-   "fundo": "#FFFFFF",
+   "alt": "YADEA GFX6 laranja em três quartos frontal",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
    "estudio": true
   },
   {
    "src": "assets/img/models/gfx6-03.webp",
    "mini": "assets/img/models/gfx6-03-mini.webp",
-   "alt": "YADEA GFX6 verde, de perfil",
-   "w": 1146,
-   "h": 808,
-   "fundo": "#FFFFFF",
+   "alt": "YADEA GFX6 laranja de frente, com o farol em X",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
    "estudio": true
   },
   {
    "src": "assets/img/models/gfx6-04.webp",
    "mini": "assets/img/models/gfx6-04-mini.webp",
-   "alt": "YADEA GFX6 branca, de perfil",
-   "w": 1146,
-   "h": 808,
-   "fundo": "#FFFFFF",
+   "alt": "YADEA GFX6 laranja em três quartos traseira",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
    "estudio": true
   },
   {
    "src": "assets/img/models/gfx6-05.webp",
    "mini": "assets/img/models/gfx6-05-mini.webp",
-   "alt": "YADEA GFX6 laranja e branca em três quartos frontal",
-   "w": 1146,
-   "h": 808,
-   "fundo": "#FFFFFF",
+   "alt": "YADEA GFX6 preta, de perfil",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
    "estudio": true
   },
   {
    "src": "assets/img/models/gfx6-06.webp",
    "mini": "assets/img/models/gfx6-06-mini.webp",
+   "alt": "YADEA GFX6 preta em três quartos frontal",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
+   "estudio": true
+  },
+  {
+   "src": "assets/img/models/gfx6-07.webp",
+   "mini": "assets/img/models/gfx6-07-mini.webp",
+   "alt": "YADEA GFX6 verde, de perfil",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
+   "estudio": true
+  },
+  {
+   "src": "assets/img/models/gfx6-08.webp",
+   "mini": "assets/img/models/gfx6-08-mini.webp",
+   "alt": "YADEA GFX6 branca, de perfil",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
+   "estudio": true
+  },
+  {
+   "src": "assets/img/models/gfx6-09.webp",
+   "mini": "assets/img/models/gfx6-09-mini.webp",
+   "alt": "Rapaz de capacete pilotando a GFX6 laranja numa avenida arborizada",
+   "w": 1200,
+   "h": 800,
+   "fundo": "#5C584F",
+   "estudio": false
+  },
+  {
+   "src": "assets/img/models/gfx6-10.webp",
+   "mini": "assets/img/models/gfx6-10-mini.webp",
+   "alt": "Bateria removível da GFX6 levada pela alça, com a scooter estacionada ao fundo",
+   "w": 1200,
+   "h": 800,
+   "fundo": "#653120",
+   "estudio": true
+  },
+  {
+   "src": "assets/img/models/gfx6-11.webp",
+   "mini": "assets/img/models/gfx6-11-mini.webp",
+   "alt": "Aplicativo da YADEA aberto no celular, com a GFX6 ao fundo",
+   "w": 1200,
+   "h": 800,
+   "fundo": "#585142",
+   "estudio": false
+  },
+  {
+   "src": "assets/img/models/gfx6-12.webp",
+   "mini": "assets/img/models/gfx6-12-mini.webp",
+   "alt": "Farol em X da GFX6, de LED com 4 lentes",
+   "w": 1200,
+   "h": 750,
+   "fundo": "#FFFDFF",
+   "estudio": true
+  },
+  {
+   "src": "assets/img/models/gfx6-13.webp",
+   "mini": "assets/img/models/gfx6-13-mini.webp",
+   "alt": "Para-brisa transparente e painel da GFX6",
+   "w": 1200,
+   "h": 750,
+   "fundo": "#CBC8CC",
+   "estudio": false
+  },
+  {
+   "src": "assets/img/models/gfx6-14.webp",
+   "mini": "assets/img/models/gfx6-14-mini.webp",
    "alt": "GFX6 descendo uma rampa: controle de descida HDC",
    "w": 1146,
    "h": 808,
@@ -306,8 +414,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/gfx6-07.webp",
-   "mini": "assets/img/models/gfx6-07-mini.webp",
+   "src": "assets/img/models/gfx6-15.webp",
+   "mini": "assets/img/models/gfx6-15-mini.webp",
    "alt": "Aplicativo da GFX6: conta familiar compartilhada, controle de cruzeiro e ré",
    "w": 1146,
    "h": 808,
@@ -315,8 +423,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/gfx6-08.webp",
-   "mini": "assets/img/models/gfx6-08-mini.webp",
+   "src": "assets/img/models/gfx6-16.webp",
+   "mini": "assets/img/models/gfx6-16-mini.webp",
    "alt": "Freios a disco de 170 mm na frente e 180 mm atrás, pneu aro 12, da GFX6",
    "w": 1146,
    "h": 808,
@@ -324,8 +432,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/gfx6-09.webp",
-   "mini": "assets/img/models/gfx6-09-mini.webp",
+   "src": "assets/img/models/gfx6-17.webp",
+   "mini": "assets/img/models/gfx6-17-mini.webp",
    "alt": "Suspensão hidráulica da GFX6: 70 mm na frente e 50 mm atrás",
    "w": 1146,
    "h": 808,
@@ -333,8 +441,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/gfx6-10.webp",
-   "mini": "assets/img/models/gfx6-10-mini.webp",
+   "src": "assets/img/models/gfx6-18.webp",
+   "mini": "assets/img/models/gfx6-18-mini.webp",
    "alt": "Assento de 540 mm da GFX6, a 740 mm do chão",
    "w": 1146,
    "h": 808,
@@ -342,8 +450,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/gfx6-11.webp",
-   "mini": "assets/img/models/gfx6-11-mini.webp",
+   "src": "assets/img/models/gfx6-19.webp",
+   "mini": "assets/img/models/gfx6-19-mini.webp",
    "alt": "Painel LED de tela cheia inteligente da GFX6",
    "w": 1146,
    "h": 808,
@@ -391,6 +499,33 @@ window.YADEA_GALERIAS = {
   {
    "src": "assets/img/models/keeness-05.webp",
    "mini": "assets/img/models/keeness-05-mini.webp",
+   "alt": "YADEA Keeness cinza em três quartos frontal",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
+   "estudio": true
+  },
+  {
+   "src": "assets/img/models/keeness-06.webp",
+   "mini": "assets/img/models/keeness-06-mini.webp",
+   "alt": "YADEA Keeness cinza de frente",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
+   "estudio": true
+  },
+  {
+   "src": "assets/img/models/keeness-07.webp",
+   "mini": "assets/img/models/keeness-07-mini.webp",
+   "alt": "YADEA Keeness cinza em três quartos traseira",
+   "w": 1200,
+   "h": 846,
+   "fundo": "#FFFEFF",
+   "estudio": true
+  },
+  {
+   "src": "assets/img/models/keeness-08.webp",
+   "mini": "assets/img/models/keeness-08-mini.webp",
    "alt": "Frente da Keeness, vencedora do prêmio Red Dot",
    "w": 1146,
    "h": 808,
@@ -398,8 +533,8 @@ window.YADEA_GALERIAS = {
    "estudio": true
   },
   {
-   "src": "assets/img/models/keeness-06.webp",
-   "mini": "assets/img/models/keeness-06-mini.webp",
+   "src": "assets/img/models/keeness-09.webp",
+   "mini": "assets/img/models/keeness-09-mini.webp",
    "alt": "Motor central da Keeness, com pico de 11.000 W",
    "w": 1146,
    "h": 808,
@@ -407,8 +542,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/keeness-07.webp",
-   "mini": "assets/img/models/keeness-07-mini.webp",
+   "src": "assets/img/models/keeness-10.webp",
+   "mini": "assets/img/models/keeness-10-mini.webp",
    "alt": "Baterias duplas removíveis de lítio da Keeness, 72 V 32 Ah",
    "w": 1146,
    "h": 808,
@@ -416,8 +551,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/keeness-08.webp",
-   "mini": "assets/img/models/keeness-08-mini.webp",
+   "src": "assets/img/models/keeness-11.webp",
+   "mini": "assets/img/models/keeness-11-mini.webp",
    "alt": "Sistema de gerenciamento inteligente de bateria (BMS) da Keeness",
    "w": 1146,
    "h": 808,
@@ -425,8 +560,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/keeness-09.webp",
-   "mini": "assets/img/models/keeness-09-mini.webp",
+   "src": "assets/img/models/keeness-12.webp",
+   "mini": "assets/img/models/keeness-12-mini.webp",
    "alt": "Chassi da Keeness em transparência, com o quadro em destaque",
    "w": 1146,
    "h": 808,
@@ -434,8 +569,8 @@ window.YADEA_GALERIAS = {
    "estudio": true
   },
   {
-   "src": "assets/img/models/keeness-10.webp",
-   "mini": "assets/img/models/keeness-10-mini.webp",
+   "src": "assets/img/models/keeness-13.webp",
+   "mini": "assets/img/models/keeness-13-mini.webp",
    "alt": "Painel digital da Keeness",
    "w": 1146,
    "h": 808,
@@ -443,8 +578,8 @@ window.YADEA_GALERIAS = {
    "estudio": true
   },
   {
-   "src": "assets/img/models/keeness-11.webp",
-   "mini": "assets/img/models/keeness-11-mini.webp",
+   "src": "assets/img/models/keeness-14.webp",
+   "mini": "assets/img/models/keeness-14-mini.webp",
    "alt": "Comandos do guidão da Keeness",
    "w": 1146,
    "h": 808,
@@ -452,8 +587,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/keeness-12.webp",
-   "mini": "assets/img/models/keeness-12-mini.webp",
+   "src": "assets/img/models/keeness-15.webp",
+   "mini": "assets/img/models/keeness-15-mini.webp",
    "alt": "Entrada USB da Keeness",
    "w": 1146,
    "h": 808,
@@ -461,8 +596,8 @@ window.YADEA_GALERIAS = {
    "estudio": false
   },
   {
-   "src": "assets/img/models/keeness-13.webp",
-   "mini": "assets/img/models/keeness-13-mini.webp",
+   "src": "assets/img/models/keeness-16.webp",
+   "mini": "assets/img/models/keeness-16-mini.webp",
    "alt": "Compartimento sob o tanque da Keeness",
    "w": 1146,
    "h": 808,

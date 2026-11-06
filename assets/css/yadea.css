@@ -1003,9 +1003,12 @@ body.menu-aberto .header {
 .card:hover .card__foto img { transform: scale(1.04) translateY(-3px); }
 .card__selos { position: absolute; top: 14px; left: 14px; z-index: 2; }
 
+/* Coluna com os botões no pé: nome, números e preço ficam na mesma altura
+   nos cards da fileira, mesmo quando um preço tem menos linhas (Keeness sem
+   parcela, GFX6 sem campanha). */
 .card__corpo {
-  display: grid;
-  align-content: space-between;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
   padding: 18px clamp(16px, 7cqi, 24px) clamp(18px, 7cqi, 24px);
 }
@@ -1065,14 +1068,36 @@ body.menu-aberto .header {
 .card__pendente { margin: 0; font-size: var(--fs-small); line-height: 1.5; color: var(--yd-slate); }
 .card__pendente strong { display: block; color: var(--yd-ink); }
 
-/* Preço (fica fora enquanto a loja não aprova; o bloco volta com o dado). */
-.preco { display: grid; gap: 1px; margin: 0; }
+/* Preço (loja, 06/11/2026): rótulo → valor com o antigo riscado ao lado →
+   parcela. O selo da campanha é grafite com ponto laranja no card branco e
+   laranja com texto grafite no modal escuro (o par do botão primário). */
+.preco { display: grid; gap: 3px; margin: 0; }
+.preco__topo { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
 .preco__rotulo { color: var(--yd-stone); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.preco__valor { font-size: clamp(20px, 7.6cqi, 24px); font-weight: 800; font-stretch: var(--yd-wide); line-height: 1.15; font-variant-numeric: tabular-nums; }
-.preco__parcelas, .preco__cartoes { color: var(--yd-slate); font-size: 12px; line-height: 1.4; }
+.preco__selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px 3px 8px;
+  border-radius: var(--r-pill);
+  background: var(--yd-ink);
+  color: var(--yd-white);
+  font-size: 9.5px;
+  font-weight: 800;
+  font-stretch: var(--yd-wide);
+  line-height: 1.35;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.preco__selo::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--yd-orange-500); }
+.preco__linha { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; }
+.preco__valor { font-size: clamp(20px, 7.6cqi, 24px); font-weight: 800; font-stretch: var(--yd-wide); line-height: 1.15; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.preco__de { color: var(--yd-stone); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; text-decoration-thickness: 1.5px; }
+.preco__parcelas { color: var(--yd-slate); font-size: 12px; line-height: 1.4; }
 
 /* Duas metades iguais, fonte e ícone medidos pela largura do CARD (cqi). */
-.card__acoes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.card__acoes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: auto; }
 .btn--card {
   min-height: 48px;
   padding: 0 clamp(10px, 4.5cqi, 18px);
@@ -1896,7 +1921,10 @@ body.menu-aberto .header {
 .modal__linha > div:empty { display: none; }
 .preco--modal .preco__rotulo { color: var(--yd-on-dark-3); }
 .preco--modal .preco__valor { font-size: 26px; color: var(--yd-white); }
-.preco--modal .preco__parcelas, .preco--modal .preco__cartoes { color: var(--yd-on-dark-2); font-size: 13px; }
+.preco--modal .preco__parcelas { color: var(--yd-on-dark-2); font-size: 13px; }
+.preco--modal .preco__de { color: var(--yd-on-dark-3); font-size: 14px; }
+.preco--modal .preco__selo { background: var(--yd-orange-500); color: var(--yd-ink); }
+.preco--modal .preco__selo::before { background: var(--yd-ink); }
 .modal__cores { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 10px; }
 .modal__cores-rotulo { margin: 0; color: var(--yd-on-dark-3); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .modal__cores-rotulo strong { color: var(--yd-white); white-space: nowrap; }
@@ -1978,7 +2006,34 @@ body.menu-aberto .header {
   .modal__base { padding: var(--sp-3) var(--sp-6) calc(14px + env(safe-area-inset-bottom)); gap: 10px; }
   .specs--modal .spec dd b { font-size: 21px; }
 }
-@media (max-width: 380px) {
+/* Celular: com o preço na base, as três faixas fixas deixavam 16 px para a
+   ficha a 360 × 740. A caixa inteira rola (galeria, título, ficha) e só a
+   base, com preço, cor e os dois botões, fica presa embaixo — como na
+   página do modelo. */
+@media (max-width: 900px) {
+  /* max-content nas duas linhas, não auto: com a caixa na altura da tela,
+     uma linha auto encolhia até caber (a galeria chegava a 0 px e a base não
+     tinha por onde grudar). */
+  .modal:not(.modal--pagina) .modal__caixa {
+    grid-template-rows: max-content max-content;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  /* O X acompanha a rolagem; as setas de modelo ficam com a galeria. */
+  .modal:not(.modal--pagina) .modal__fechar { position: fixed; top: calc(var(--sp-4) + env(safe-area-inset-top)); right: var(--sp-4); }
+  .modal:not(.modal--pagina) .modal__painel { grid-template-rows: auto auto auto; overflow: visible; }
+  .modal:not(.modal--pagina) .modal__corpo { overflow: visible; }
+  .modal:not(.modal--pagina) .modal__base {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    background: rgba(16, 16, 16, .96);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+@media (max-width: 339px) {
   .modal__acoes { grid-template-columns: minmax(0, 1fr); }
 }
 

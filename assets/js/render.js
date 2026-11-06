@@ -89,40 +89,64 @@ window.YADEA_RENDER = (() => {
         </dl>`;
   }
 
-  /* Sem preço (modelo novo antes de a loja informar): o bloco continua no
-     lugar, para o card não ficar mais baixo que os vizinhos da fileira. */
-  /* Parcelamento confirmado pela loja (29/10/2026) vem como objeto: o dado é
-     o total no cartão e a parcela sai da conta, para não voltar a divergir
-     do total (README, seção 1). O texto herdado do WP continua string.
-     Decisão do cliente (29/10/2026): "sem juros" por extenso quando não há
-     juros; com juros, a linha não fala neles.
-     05/11/2026 (loja): o à vista é só no PIX ou dinheiro, então o rótulo diz
-     onde ele vale e a parcela vem como alternativa ("ou 12x"), em tom mais
-     discreto que o preço. Os cartões aceitos aparecem também no card
-     ("tem que deixar na home"), numa linha própria: junto da parcela, o pior
-     caso vazava o card a 320, 1024, 1280 e 1440 px. Sem o total a prazo, no
-     card e no modal (pedido do dono, mesmo avisado do Decreto 5.903/2006;
-     README, seção 1): o card e o modal mostram as mesmas linhas. */
-  function parcelas(p) {
-    if (!p) return '';
-    if (typeof p === 'string') return `<span class="preco__parcelas">${escapar(p)}</span>`;
-    const juros = p.juros ? '' : ' sem juros';
-    const linha = `<span class="preco__parcelas">ou ${p.vezes}x de ${real.format(p.total / p.vezes)}${juros}</span>`;
-    const cartoes = p.cartoes ? `<span class="preco__cartoes">no cartão ${escapar(p.cartoes)}</span>` : '';
-    return linha + cartoes;
+  /* Preço como a loja escreve: "R$ 6.900" (sem centavos); parcela sempre com
+     centavos ("R$ 553,00", real.format). */
+  const realInteiro = new Intl.NumberFormat('pt-BR', {
+    style: 'currency', currency: 'BRL', minimumFractionDigits: 0, maximumFractionDigits: 0,
+  });
+  const dinheiro = (v) => (Number.isInteger(v) ? realInteiro : real).format(v);
+
+  /* Preço que vale AGORA, num formato só para o card, o modal, o JSON-LD, o
+     llms.txt e a medição. `promo` só vale com a campanha ligada
+     (YADEA_CAMPANHA.ativa): desligada, volta o preço cheio sem mexer em
+     modelo nenhum. A parcela vem da loja como valor da parcela (21x de
+     R$ 441,28); o objeto antigo com `total` continua aceito. */
+  function precoDe(m) {
+    const p = m?.preco;
+    if (!p?.valor) return null;
+    const campanha = window.YADEA_CAMPANHA;
+    const emPromo = Boolean(campanha?.ativa && p.promo && p.promo < p.valor);
+    const parc = p.parcelas && typeof p.parcelas === 'object' ? p.parcelas : null;
+    return {
+      valor: emPromo ? p.promo : p.valor,
+      de: emPromo ? p.valor : null,
+      campanha: emPromo ? campanha.nome : null,
+      parcelas: parc ? {
+        vezes: parc.vezes,
+        valor: parc.parcela ?? parc.total / parc.vezes,
+        juros: Boolean(parc.juros),
+        cartoes: parc.cartoes || null,
+      } : null,
+    };
   }
 
-  /* Sem preço, sem bloco: o styleguide manda o card levar ao WhatsApp
-     enquanto a loja não aprova preço (todos os 6 hoje). Com preço no
-     catálogo, o bloco volta sozinho, no card e no modal. */
+  /* Uma linha só para a parcela, em tom mais discreto que o preço: "ou 21x
+     de R$ 441,28 no cartão" (+ bandeiras, quando a loja restringe). Com
+     juros, a linha não fala neles; sem juros, diz "sem juros". */
+  function parcelas(p) {
+    if (!p) return '';
+    const juros = p.juros ? '' : ' sem juros';
+    const cartao = p.cartoes ? ` no cartão ${escapar(p.cartoes)}` : ' no cartão';
+    return `<span class="preco__parcelas">ou ${p.vezes}x de ${real.format(p.valor)}${juros}${cartao}</span>`;
+  }
+
+  /* Preço aprovado pela loja (06/11/2026). Na campanha: selo, preço novo e
+     o antigo riscado ao lado. O "antes"/"por" ocultos fazem o leitor de tela
+     ler a oferta na ordem certa. Sem preço no catálogo, sem bloco. */
   function preco(m, classe = '') {
-    if (!m.preco?.valor) return '';
+    const p = precoDe(m);
+    if (!p) return '';
     const aVista = window.YADEA_PAGAMENTO?.aVista;
+    const rotulo = aVista ? `À vista no ${escapar(aVista)}` : 'À vista';
+    const selo = p.campanha ? `<span class="preco__selo">${escapar(p.campanha)}</span>` : '';
+    const de = p.de
+      ? ` <s class="preco__de"><span class="u-visually-hidden">antes </span>${dinheiro(p.de)}</s>`
+      : '';
     return `
         <p class="preco ${classe}">
-          <span class="preco__rotulo">${aVista ? `À vista · ${escapar(aVista)}` : 'Valor'}</span>
-          <span class="preco__valor">${real.format(m.preco.valor)}</span>
-          ${parcelas(m.preco.parcelas)}
+          <span class="preco__topo">${selo}<span class="preco__rotulo">${rotulo}</span></span>
+          <span class="preco__linha"><span class="preco__valor">${p.de ? '<span class="u-visually-hidden">por </span>' : ''}${dinheiro(p.valor)}</span>${de}</span>
+          ${parcelas(p.parcelas)}
         </p>`;
   }
 
@@ -309,8 +333,8 @@ window.YADEA_RENDER = (() => {
   const urlModelo = (m) => `modelos-de-motos/${m.slug || m.id}/`;
 
   return {
-    escapar, real, ICONE_WHATS, nomeCompleto, categoriasDe, linkWhats,
-    ordenados, selos, numeros, parcelas, preco, eyebrow, eyebrowCurto, card, faq, palcoDe, milhar,
+    escapar, real, dinheiro, ICONE_WHATS, nomeCompleto, categoriasDe, linkWhats,
+    ordenados, selos, numeros, precoDe, parcelas, preco, eyebrow, eyebrowCurto, card, faq, palcoDe, milhar,
     HEX_VALIDO, IMAGEM_LOCAL, paletaDe, fotosDaCor, slides, miniaturas, ficha,
     equipamentos, swatches, urlModelo,
   };
