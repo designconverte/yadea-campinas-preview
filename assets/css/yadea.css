@@ -74,7 +74,7 @@
   --yd-normal: 100%;
   --fs-display: clamp(2.25rem, 1.1rem + 4vw, 5rem);
   --fs-h1: clamp(1.75rem, 1.2rem + 2.4vw, 3.5rem);
-  --fs-h2: clamp(1.625rem, 1.2rem + 1.4vw, 2.5rem);
+  --fs-h2: clamp(1.375rem, 1.05rem + 1.6vw, 2.5rem);
   --fs-h3: clamp(1.25rem, 1rem + .8vw, 1.75rem);
   --fs-h4: clamp(1.0625rem, .9rem + .4vw, 1.25rem);
   --fs-body-l: 1.125rem;
@@ -116,7 +116,18 @@
 /* Abaixo de 360 px (iPhone SE 1ª geração e similares): uma palavra longa em
    caixa alta expandida ("AUTOPROPELIDOS") passava de 280 px úteis. */
 @media (max-width: 359px) {
-  :root { --fs-h2: 1.375rem; --fs-h1: 1.5rem; --fs-h3: 1.125rem; }
+  :root { --fs-h2: 1.3125rem; --fs-h1: 1.5rem; --fs-h3: 1.125rem; }
+}
+
+/* Escala do celular: menos grito, mais respiro. Texto de apoio em 16 px,
+   eyebrows menores e mais juntos (não quebram em duas linhas), cabeçalhos
+   de seção com menos margem. */
+@media (max-width: 560px) {
+  :root { --fs-body-l: 1rem; --fs-eyebrow: .6875rem; }
+  .eyebrow { letter-spacing: .12em; gap: 8px; }
+  .eyebrow::before { width: 14px; }
+  .cabecalho { gap: var(--sp-3); margin-bottom: var(--sp-8); }
+  .t-lead { line-height: 1.6; }
 }
 
 /* ── base ──────────────────────────────────────────────────────────────── */
@@ -361,6 +372,12 @@ a:hover { color: var(--yd-ink); }
 /* Telas estreitas: botão nenhum impõe largura mínima ao layout. */
 @media (max-width: 379px) {
   .btn { white-space: normal; text-align: center; padding-inline: 18px; }
+  /* O CTA do hero continua numa linha só: largura 112 e tracking menor
+     ("QUERO CONHECER OS MODELOS" passava da borda a 320 e 360 px). */
+  .hero .u-acoes > .btn.btn--primario { font-size: 11.5px; font-stretch: 112%; letter-spacing: .03em; padding-inline: 16px; }
+}
+@media (max-width: 359px) {
+  .hero .u-acoes > .btn.btn--primario { white-space: normal; text-align: left; }
 }
 
 /* No celular os CTAs de seção ocupam a largura e o rótulo pode quebrar. */
@@ -650,7 +667,7 @@ body.menu-aberto .header {
     linear-gradient(180deg, rgba(23, 23, 23, .45) 0%, rgba(23, 23, 23, 0) 28%, rgba(23, 23, 23, .2) 60%, rgba(23, 23, 23, .95) 100%);
 }
 
-.hero__conteudo { position: relative; display: grid; gap: var(--sp-6); max-width: 960px; }
+.hero__conteudo { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sp-6); max-width: 960px; }
 
 /* Duas larguras de voz: "Líder global" em display 800 expandido; o resto da
    frase em h1 de peso 500. Em 800 a frase inteira virava sete linhas. */
@@ -728,17 +745,53 @@ body.menu-aberto .header {
   /* Ancorado no topo (não centralizado): centralizado, qualquer diferença de
      altura do título na troca de fonte re-centralizava o bloco inteiro
      (CLS 0,05 medido a 390 px). */
-  .hero { min-height: max(620px, 100svh); padding-top: calc(var(--yd-header) + var(--sp-8)); align-items: start; }
+  /* padding-bottom = altura do botão flutuante + folga: a faixa de resumo
+     não fica embaixo dele. */
+  .hero { min-height: max(620px, 100svh); padding: calc(var(--yd-header) + var(--sp-8)) 0 88px; align-items: start; }
   .hero__midia img, .hero__midia video { object-position: 50% 50%; }
   .hero__scrim {
     background: linear-gradient(180deg, rgba(23, 23, 23, .78) 0%, rgba(23, 23, 23, .5) 38%, rgba(23, 23, 23, .7) 68%, rgba(23, 23, 23, .96) 100%);
   }
-  .hero__titulo { font-size: clamp(1.25rem, .9rem + 2.2vw, 1.75rem); }
-  .hero .u-acoes .btn { width: 100%; }
-  .prova { grid-template-columns: minmax(0, 1fr); margin-top: var(--sp-12); }
-  .prova__item { grid-template-columns: 96px minmax(0, 1fr); align-items: center; gap: 12px; padding: 14px 18px; }
-  .prova__item + .prova__item { border-left: 0; border-top: 1px solid var(--yd-line-dark); }
-  .prova__numero { font-size: 22px; }
+  /* Duas vozes: "LÍDER GLOBAL" grande, em caixa alta expandida, numa linha
+     só (9vw cabe de 320 a 760 px); o resto vira frase em caixa baixa,
+     largura normal, 20 px — lê-se como um subtítulo, não como mais um grito.
+     Antes eram 7 linhas em caixa alta expandida. */
+  .hero__conteudo { gap: var(--sp-4); }
+  .hero__titulo {
+    font-size: 1.25rem;
+    font-weight: 500;
+    font-stretch: var(--yd-normal);
+    line-height: 1.3;
+    text-transform: none;
+    color: var(--yd-on-dark-2);
+  }
+  .hero__forte {
+    margin-bottom: 6px;
+    font-size: 9vw;
+    font-stretch: var(--yd-wide);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--yd-white);
+  }
+  .hero__destaque { font-weight: 700; }
+  .hero__carga { width: 72px; height: 3px; margin-top: 4px; }
+  .hero__lead { max-width: 34ch; font-size: 15px; line-height: 1.55; }
+  .hero__eyebrow .hero__local { display: none; }
+
+  /* Uma ação principal; o test ride vira link secundário (mesmo destino). */
+  .hero .u-acoes { flex-direction: column; align-items: stretch; gap: 4px; margin-top: var(--sp-2); }
+  .hero .u-acoes > .btn { width: 100%; white-space: nowrap; font-size: 12.5px; letter-spacing: .05em; padding-inline: 16px; }
+  .hero .u-acoes > .hero__secundario { min-height: 44px; border-color: transparent; background: none; }
+  .hero .u-acoes > .btn--primario { justify-content: space-between; padding-inline: 20px; }
+  .hero .u-acoes > .hero__secundario:hover { background: none; color: var(--yd-orange-400); transform: none; }
+
+  /* Faixa de resumo em 3 colunas compactas (eram 3 linhas altas). */
+  .prova { margin-top: var(--sp-8); border-radius: var(--r-md); }
+  .prova__item { gap: 4px; padding: 12px 10px; }
+  .prova__item + .prova__item { border-left: 1px solid var(--yd-line-dark); }
+  .prova__numero { gap: 4px; font-size: 20px; }
+  .prova__numero small { font-size: 9px; letter-spacing: .04em; }
+  .prova__rotulo { font-size: 11px; line-height: 1.35; }
 }
 
 /* ── vitrine (papel) ───────────────────────────────────────────────────── */
@@ -1198,6 +1251,7 @@ body.menu-aberto .header {
   text-transform: uppercase;
 }
 .destaque__lead { margin: 0; color: var(--yd-on-dark-2); font-size: var(--fs-body-l); line-height: 1.6; text-wrap: pretty; }
+@media (max-width: 560px) { .destaque__conteudo { gap: var(--sp-4); } .destaque__nota { font-size: 12px; } }
 /* Colunas do tamanho do conteúdo: "5.500 W" é o mais largo e encostava na
    divisória com três colunas iguais. */
 .destaque__conteudo > .destaque__numeros { max-width: 680px; }
@@ -1447,6 +1501,10 @@ body.menu-aberto .header {
 .cta-final p { margin: 0; font-size: var(--fs-body-l); font-weight: 500; line-height: 1.55; color: var(--yd-ink); max-width: 56ch; }
 .cta-final :where(a, button):focus-visible { outline-color: var(--yd-ink); }
 .cta-final .btn--escuro { min-height: 58px; padding-inline: 30px; }
+@media (max-width: 560px) {
+  .cta-final__titulo { font-size: 1.5rem; line-height: 1.08; }
+  .cta-final .btn--escuro { width: 100%; }
+}
 .cta-final .btn--escuro svg { color: var(--yd-whatsapp); }
 
 /* ── rodapé (grafite) ──────────────────────────────────────────────────── */
