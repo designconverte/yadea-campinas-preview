@@ -1,5 +1,5 @@
 /* ==========================================================================
-   YADEA · catálogo de modelos, FAQ, guia local e depoimentos
+   YADEA · catálogo de modelos, FAQ e depoimentos
    --------------------------------------------------------------------------
    OS 6 MODELOS DO SITE ATUAL (yadeacampinas.com, coletado em 06/11/2026), na
    ordem do styleguide (seção 07). Os três números do card (velocidade,
@@ -361,18 +361,30 @@ const MODELOS = [
 
 window.YADEA_MODELOS = MODELOS.filter((m) => !m.oculto);
 
-/* ── FAQ: "Dúvidas mais comuns" (site atual, texto da loja) ─────────────
+/* ── FAQ: uma seção só (pedido do cliente, 06/11/2026) ───────────────────
+   O site atual tinha duas listas: "Dúvidas mais comuns" (19) e o guia
+   "Mobilidade elétrica em Campinas" (18), com seis assuntos repetidos (CNH,
+   recarga, tomada, chuva, test ride, assistência). Ficaram as 15 que mais
+   pesam na decisão, na ordem em que o comprador pensa: legislação → test
+   ride → custos → pagamento → pós-venda → escolha do modelo → uso → onde
+   comprar. Textos da loja, sem retoque; quando o assunto existia nas duas
+   listas, ficou a resposta mais completa. As que citam a cidade vêm do guia
+   local (SEO). Saíram: capacete, limpeza, quem fabrica, baterias de lítio,
+   conectividade, "por que escolher", peças, garupa, autonomia na prática,
+   "vale a pena", diferença autopropelido × ciclomotor e as repetidas.
    As 8 primeiras aparecem; as outras abrem em "Ver todas as dúvidas". Todas
    ficam no HTML (SEO e IAs) e no FAQPage do JSON-LD. */
 window.YADEA_FAQ_VISIVEIS = 8;
 window.YADEA_FAQ = [
   {
-    q: 'Quais modelos da Yadea não precisam de CNH e emplacamento?',
-    a: 'Os veículos autopropelidos da Yadea são classificados como equipamentos de mobilidade elétrica de baixa velocidade. Por isso, não exigem CNH, emplacamento ou pagamento de IPVA, oferecendo uma alternativa prática e acessível para quem busca mobilidade urbana sem burocracia. Todos os modelos autopropelidos disponíveis em nossa loja se enquadram nessa regra — basta subir, acelerar e aproveitar com total tranquilidade.',
+    // guia local
+    q: `Quais modelos da ${LOJA} não precisam de CNH e emplacamento?`,
+    a: `Em geral, os modelos enquadrados como autopropelidos, com velocidade máxima de fabricação de até 32 km/h e potência dentro do limite permitido, não precisam de CNH, ACC, emplacamento ou IPVA. Na ${LOJA}, a equipe orienta o cliente modelo por modelo para confirmar a classificação correta antes da compra.`,
   },
   {
-    q: 'É possível testar a scooter antes de comprar?',
-    a: `Sim! A ${LOJA} oferece test ride agendado para que você experimente o modelo ideal antes da compra.`,
+    // guia local (a do FAQ dizia o mesmo em uma linha)
+    q: 'Posso fazer test ride antes de comprar uma scooter elétrica?',
+    a: 'Sim. O test ride é uma das melhores formas de escolher o modelo certo, principalmente para quem nunca usou uma scooter elétrica. Durante o teste, você consegue avaliar conforto, altura do banco, aceleração, estabilidade, frenagem, peso, ergonomia e sensação de segurança no uso real.',
   },
   {
     q: 'Como funciona a garantia da Yadea?',
@@ -399,126 +411,37 @@ window.YADEA_FAQ = [
     a: `Sim! A ${LOJA} conta com assistência técnica autorizada na própria loja, com equipe especializada e treinada pela marca para realizar manutenção e suporte em scooters elétricas Yadea, garantindo segurança, qualidade e tranquilidade no pós-venda.`,
   },
   {
+    // guia local
+    q: 'Como escolher entre GB60, M6-H, Owin, DT3, GFX6 e Keeness?',
+    a: 'Se sua prioridade é praticidade urbana, economia e deslocamento diário, modelos como GB60, M6-H, Owin, DT3 e GFX6 podem ser boas opções dentro da proposta de mobilidade elétrica urbana. Se você busca mais performance, maior velocidade e uma experiência mais próxima de uma moto elétrica robusta, a Keeness pode fazer mais sentido. A melhor escolha é comparar autonomia, potência, conforto, necessidade de documentação e tipo de trajeto.',
+  },
+  {
     q: 'A Yadea possui modelos homologados no Brasil?',
     a: 'Sim. Os modelos que ultrapassam os limites de autopropelidos passam por homologação completa no Inmetro e Denatran, atendendo às normas nacionais de segurança. O cliente recebe o documento necessário para realizar o primeiro emplacamento.',
   },
   {
-    q: 'Vocês vendem peças e acessórios originais Yadea?',
-    a: `Sim. A ${LOJA} possui peças originais, manutenção especializada e acessórios compatíveis, garantindo a durabilidade e o desempenho da sua scooter.`,
-  },
-  {
-    q: 'É obrigatório o uso de capacete nas scooters Yadea?',
-    a: `Não. A resolução do CONTRAN 996/23 não cita equipamentos de segurança, porém nós, da ${LOJA}, sempre aconselhamos!`,
-  },
-  {
-    q: 'Quem fabrica as scooters de vocês?',
-    a: 'Todos os produtos são fabricados pela Yadea, líder mundial em veículos elétricos de duas rodas, presente em mais de 100 países e com mais de 100 milhões de unidades vendidas.',
-  },
-  {
-    q: 'As baterias são de lítio?',
-    a: 'Sim. A Yadea utiliza baterias LFP ou íon-lítio, dependendo do modelo. Ambas são seguras, duráveis e possuem sistemas inteligentes de proteção (BMS).',
-  },
-  {
-    q: 'Como faço a limpeza da minha scooter?',
-    a: 'Você pode usar água corrente moderada, pano úmido e sabão neutro. Evite jatos de alta pressão diretamente no motor, no painel e na bateria.',
+    // guia local
+    q: `Scooter elétrica aguenta subida em ${CIDADE}?`,
+    a: 'Sim, mas o desempenho em subida depende da potência do motor, do peso do condutor, da inclinação da via e da carga da bateria. Para regiões com ladeiras ou trajetos mais exigentes, é recomendável escolher um modelo com mais torque e testar a scooter em um test ride antes de fechar a compra.',
   },
   {
     q: 'As scooters Yadea são resistentes à chuva?',
     a: 'Sim. Os modelos possuem proteção IP (varia por modelo), permitindo uso em chuva leve. Recomenda-se evitar alagamentos ou chuva extrema.',
   },
   {
-    q: 'As scooters aceitam garupa?',
-    a: 'Sim. Modelos maiores (como a Keeness) aceitam garupa. Modelos autopropelidos geralmente são monoposto (somente 1 pessoa).',
-  },
-  {
-    q: 'A scooter pode pegar subida?',
-    a: 'Sim, os motores da Yadea são preparados para inclinações urbanas. A capacidade de subida depende do modelo — alguns chegam a 15º de inclinação facilmente.',
-  },
-  {
-    q: 'As scooters têm conectividade com app?',
-    a: 'Os modelos mais novos possuem recursos como desbloqueio pelo app, rastreamento básico, atualização de software (OTA) e histórico de uso.',
-  },
-  {
-    q: 'Por que escolher uma scooter elétrica Yadea?',
-    a: 'Zero emissão de poluentes, baixíssimo custo por km rodado, conforto e silêncio, manutenção simples, tecnologia e conectividade, e uma marca líder mundial.',
-  },
-];
-
-/* ── Guia local: "Mobilidade elétrica em <cidade>" (site atual, seção de
-   SEO local). Mesmo acordeão, abaixo do FAQ. */
-window.YADEA_GUIA_INTRO = 'Entenda a diferença entre scooter elétrica, moto elétrica, autopropelido e ciclomotor, veja quando precisa de CNH ou emplacamento e descubra qual modelo combina melhor com sua rotina.';
-window.YADEA_GUIA = [
-  {
-    q: `Qual é a melhor scooter elétrica para usar em ${CIDADE} no dia a dia?`,
-    a: 'A melhor escolha depende do seu trajeto, da distância diária, do tipo de via e da necessidade de desempenho. Para deslocamentos urbanos — bairro, trabalho, faculdade, mercado e pequenos trajetos —, modelos como GB60, M6-H, Owin, DT3 e GFX6 podem atender muito bem quem busca economia, praticidade e baixa burocracia. Para quem precisa de mais velocidade, potência e autonomia, modelos como a Keeness entram em uma categoria superior e exigem análise de documentação, habilitação e emplacamento.',
-  },
-  {
-    q: `Scooter elétrica precisa de CNH em ${CIDADE}?`,
-    a: 'Depende da classificação do veículo. Modelos enquadrados como equipamentos de mobilidade individual autopropelidos, dentro dos limites de potência, velocidade, largura e distância entre eixos definidos pela legislação, não exigem CNH, ACC, registro ou emplacamento. Já modelos classificados como ciclomotores, motonetas ou motocicletas elétricas exigem documentação, placa e habilitação adequada, como ACC ou CNH A.',
-  },
-  {
-    q: 'Qual a diferença entre scooter elétrica autopropelida e ciclomotor elétrico?',
-    a: 'O autopropelido é voltado para mobilidade urbana de baixa velocidade e menor burocracia, seguindo limites como potência de até 1000 W e velocidade máxima de fabricação de até 32 km/h. O ciclomotor elétrico já é um veículo de categoria superior, podendo ter mais potência e desempenho, mas exige registro, emplacamento e condutor habilitado. Por isso, antes de comprar, é importante verificar a classificação exata do modelo.',
-  },
-  {
-    q: `Quais modelos da ${LOJA} não precisam de CNH e emplacamento?`,
-    a: `Em geral, os modelos enquadrados como autopropelidos, com velocidade máxima de fabricação de até 32 km/h e potência dentro do limite permitido, não precisam de CNH, ACC, emplacamento ou IPVA. Na ${LOJA}, a equipe orienta o cliente modelo por modelo para confirmar a classificação correta antes da compra.`,
-  },
-  {
-    q: 'Scooter elétrica pode andar na rua, ciclovia ou calçada?',
-    a: 'A circulação depende do tipo de veículo e das regras locais da via. Bicicletas elétricas e autopropelidos costumam seguir regras semelhantes às das bicicletas, respeitando ciclovias, ciclofaixas e limites de velocidade. Em áreas de pedestres, a circulação só deve ocorrer quando permitida pelo órgão responsável e em baixa velocidade. Ciclomotores, por outro lado, não devem circular em calçadas ou ciclovias.',
-  },
-  {
-    q: 'Quanto custa carregar uma scooter elétrica Yadea?',
-    a: 'O custo de recarga é muito baixo quando comparado ao abastecimento com gasolina. O valor exato depende da capacidade da bateria, do modelo escolhido e da tarifa de energia da sua região. Para a maioria dos usos urbanos, a scooter elétrica tende a oferecer um custo por quilômetro muito menor do que um veículo a combustão.',
-  },
-  {
-    q: 'Posso carregar a scooter elétrica em tomada comum?',
-    a: 'Sim. Os modelos Yadea utilizam carregadores próprios e podem ser carregados em tomada comum compatível, seguindo as orientações do manual do produto. Em muitos casos, o carregador é bivolt, permitindo uso em tomadas 110V ou 220V. O ideal é utilizar uma tomada em boas condições, evitar extensões inadequadas e seguir as recomendações da assistência autorizada.',
-  },
-  {
-    q: 'Quanto tempo demora para carregar uma scooter elétrica?',
-    a: 'O tempo de recarga varia conforme o modelo, a capacidade da bateria e o nível de carga restante. Em média, modelos urbanos podem levar algumas horas para uma carga completa. Para quem usa todos os dias, uma rotina simples é carregar à noite ou nos períodos em que a scooter fica parada.',
-  },
-  {
-    q: 'Qual autonomia uma scooter elétrica tem na prática?',
-    a: `A autonomia depende do modelo, do peso transportado, do relevo, da calibragem dos pneus, do modo de condução e da velocidade média. No site da ${LOJA}, há modelos urbanos com autonomias indicadas entre aproximadamente 50 km e 71 km, além de modelos de maior desempenho com autonomia superior. Antes da compra, vale comparar sua rota diária com a autonomia estimada do modelo escolhido.`,
-  },
-  {
-    q: `Scooter elétrica aguenta subida em ${CIDADE}?`,
-    a: 'Sim, mas o desempenho em subida depende da potência do motor, do peso do condutor, da inclinação da via e da carga da bateria. Para regiões com ladeiras ou trajetos mais exigentes, é recomendável escolher um modelo com mais torque e testar a scooter em um test ride antes de fechar a compra.',
-  },
-  {
-    q: 'As scooters elétricas Yadea podem pegar chuva?',
-    a: 'Os modelos Yadea possuem proteção adequada para uso urbano e podem lidar com chuva leve ou piso molhado, respeitando as especificações de cada produto. Mesmo assim, não é recomendado enfrentar alagamentos, jatos de alta pressão diretamente em componentes elétricos ou situações extremas que possam comprometer motor, painel, bateria e conectores.',
-  },
-  {
+    // guia local
     q: 'A bateria de lítio da scooter elétrica é removível?',
     a: `Alguns modelos contam com bateria removível, o que facilita a recarga em casa, no apartamento ou no trabalho. Isso é especialmente útil para quem não tem tomada na garagem. Antes de escolher o modelo, confirme com a ${LOJA} se a versão desejada possui bateria removível e qual é o procedimento correto de retirada, transporte e carregamento.`,
   },
   {
-    q: 'Scooter elétrica aceita garupa?',
-    a: 'Depende do modelo e da classificação do veículo. Alguns modelos maiores são projetados para transportar duas pessoas, enquanto modelos autopropelidos geralmente são voltados para uso individual. Para segurança, sempre verifique a capacidade de carga, o tipo de banco, a documentação e a recomendação do fabricante.',
+    // guia local
+    q: 'Scooter elétrica pode andar na rua, ciclovia ou calçada?',
+    a: 'A circulação depende do tipo de veículo e das regras locais da via. Bicicletas elétricas e autopropelidos costumam seguir regras semelhantes às das bicicletas, respeitando ciclovias, ciclofaixas e limites de velocidade. Em áreas de pedestres, a circulação só deve ocorrer quando permitida pelo órgão responsável e em baixa velocidade. Ciclomotores, por outro lado, não devem circular em calçadas ou ciclovias.',
   },
   {
-    q: 'Vale a pena comprar uma scooter elétrica em vez de moto a gasolina?',
-    a: 'Para uso urbano, a scooter elétrica pode valer muito a pena. Ela reduz o gasto com combustível, tem manutenção mais simples, não emite fumaça, é silenciosa e facilita trajetos curtos e médios. A decisão ideal depende da sua distância diária, da necessidade de velocidade, do local de recarga e de você buscar um modelo sem burocracia ou um veículo de maior desempenho.',
-  },
-  {
+    // guia local
     q: `Onde comprar scooter elétrica Yadea em ${CIDADE}?`,
     a: `A ${LOJA} atende na ${ENDERECO_TEXTO}. Na unidade, você pode conhecer os modelos, tirar dúvidas sobre legislação, autonomia e manutenção, além de agendar um test ride para experimentar a scooter antes de comprar.`,
-  },
-  {
-    q: `A ${LOJA} oferece assistência técnica?`,
-    a: `Sim. A ${LOJA} oferece suporte e assistência técnica para os modelos da marca, com orientação sobre manutenção, peças, bateria, carregamento, revisão e cuidados de uso. Esse é um diferencial importante para quem quer comprar uma scooter elétrica com suporte local em ${CFG_LOJA.unidade.regiao}.`,
-  },
-  {
-    q: 'Posso fazer test ride antes de comprar uma scooter elétrica?',
-    a: 'Sim. O test ride é uma das melhores formas de escolher o modelo certo, principalmente para quem nunca usou uma scooter elétrica. Durante o teste, você consegue avaliar conforto, altura do banco, aceleração, estabilidade, frenagem, peso, ergonomia e sensação de segurança no uso real.',
-  },
-  {
-    q: 'Como escolher entre GB60, M6-H, Owin, DT3, GFX6 e Keeness?',
-    a: 'Se sua prioridade é praticidade urbana, economia e deslocamento diário, modelos como GB60, M6-H, Owin, DT3 e GFX6 podem ser boas opções dentro da proposta de mobilidade elétrica urbana. Se você busca mais performance, maior velocidade e uma experiência mais próxima de uma moto elétrica robusta, a Keeness pode fazer mais sentido. A melhor escolha é comparar autonomia, potência, conforto, necessidade de documentação e tipo de trajeto.',
   },
 ];
 

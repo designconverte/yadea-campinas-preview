@@ -753,20 +753,26 @@ body.menu-aberto .header {
     background: linear-gradient(180deg, rgba(23, 23, 23, .78) 0%, rgba(23, 23, 23, .5) 38%, rgba(23, 23, 23, .7) 68%, rgba(23, 23, 23, .96) 100%);
   }
   /* Duas vozes: "LÍDER GLOBAL" grande, em caixa alta expandida, numa linha
-     só (9vw cabe de 320 a 760 px); o resto vira frase em caixa baixa,
-     largura normal, 20 px — lê-se como um subtítulo, não como mais um grito.
-     Antes eram 7 linhas em caixa alta expandida. */
+     só (9vw cabe de 320 a 760 px); o resto vira subtítulo em texto corrido,
+     largura normal, 16 px — lê-se como apoio, não como mais um grito. Antes
+     eram 7 linhas em caixa alta expandida. */
   .hero__conteudo { gap: var(--sp-4); }
+  /* Subtítulo em texto corrido, maiúsculas, 16 px (pedido do cliente,
+     06/11/2026): sem as quebras à mão, cabe em 2 linhas de 360 px para cima.
+     Sem JS, o <br> some aqui; com JS, o motion.js junta as linhas. */
   .hero__titulo {
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
     font-stretch: var(--yd-normal);
-    line-height: 1.3;
-    text-transform: none;
+    line-height: 1.45;
+    letter-spacing: .02em;
+    text-transform: uppercase;
     color: var(--yd-on-dark-2);
   }
+  .hero__titulo br { display: none; }
   .hero__forte {
-    margin-bottom: 6px;
+    display: block;
+    margin-bottom: 8px;
     font-size: 9vw;
     font-stretch: var(--yd-wide);
     line-height: 1;

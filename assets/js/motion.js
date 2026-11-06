@@ -114,7 +114,13 @@
       /* Cada linha (separada por <br>) vira uma máscara. O <span> do
          destaque sobrevive à divisão porque o split é por <br>, nunca dentro
          de tag. */
-      const linhas = titulo.innerHTML.split(/<br\s*\/?>/i);
+      const quebras = titulo.innerHTML.split(/<br\s*\/?>/i);
+      /* Celular: a 1ª linha ("Líder global") continua sozinha; o resto vira
+         UMA máscara de texto corrido, que quebra onde couber (pedido do
+         cliente, 06/11/2026: três linhas quebradas à mão pesavam). */
+      const linhas = matchMedia('(max-width: 760px)').matches && quebras.length > 2
+        ? [quebras[0], quebras.slice(1).map((l) => l.trim()).join(' ')]
+        : quebras;
       titulo.innerHTML = linhas
         .map((l) => `<span class="hero__linha"><span>${l.trim()}</span></span>`)
         .join('');
