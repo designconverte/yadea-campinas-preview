@@ -13,6 +13,11 @@
      3. o FAQ do site atual (garantia 2/2/1 anos, carregador bivolt) — vale
         para todos; o fabricante não publica esses dois.
    Peso e carga máxima: nenhuma fonte publica, então não aparecem.
+   AJUSTES DA LOJA (Gabriel, 06/11/2026): bateria escrita "LiFePO4 (Fosfato de ferro-lítio)";
+   conectividade só "App YADEA" (o que o app faz muda de modelo para modelo,
+   a loja manda depois); motor no cubo sem complemento ("90% de eficiência"
+   não dizia nada ao comprador); proteção IPX5 em GB60 e DT3 e IPX7 na
+   Keeness inteira (não só na bateria).
    Campo sem fonte não aparece. Divergência vai comentada e no README.
 
    PREÇO: aprovado e enviado pela loja em 06/11/2026 (WhatsApp), todos à
@@ -148,10 +153,10 @@ const MODELOS = [
     preco: { valor: 13900, promo: 9900, parcelas: PARCELA_21X(776.43, { cartoes: 'Visa ou Mastercard' }) },
     specs: {
       velocidade: { valor: 32, unidade: 'km/h' },
-      potencia: { valor: 1000, unidade: 'W', nota: 'Motor no cubo da roda, 90% de eficiência.' },
+      potencia: { valor: 1000, unidade: 'W', nota: 'Motor no cubo.' },
       autonomia: { valor: 71, unidade: 'km' },
       torque: '117 N·m',
-      bateria: 'LFP (lítio-ferro-fosfato) removível, 60 V 30 Ah',
+      bateria: 'LiFePO4 (Fosfato de ferro-lítio) removível, 60 V 30 Ah',
       recarga: '5 horas',
       carregador: CARREGADOR,
       freios: 'Disco na frente, tambor atrás',
@@ -161,7 +166,7 @@ const MODELOS = [
       bagageiro: 'Baú de 15 litros sob o banco',
       dimensoes: '1770 × 665 × 1135 mm · 1290 mm entre eixos',
       rampa: 'Até 14°',
-      conectividade: 'App YADEA por Bluetooth: conta familiar, buzina localizadora e atualização remota (OTA)',
+      conectividade: 'App YADEA',
       garantia: GARANTIA,
     },
     equipamentos: ['Bateria removível: carrega em casa ou no trabalho', 'Controle de cruzeiro, ré com um toque e modos ECO e SPORT', 'Farol de 28.000 cd, com 70 m de alcance', 'Assoalho com 320 mm de extensão para os pés', 'Baú de 15 litros sob o banco'],
@@ -190,7 +195,7 @@ const MODELOS = [
     preco: { valor: 9900, promo: 7900, parcelas: PARCELA_21X(553) },
     specs: {
       velocidade: { valor: 32, unidade: 'km/h' },
-      potencia: { valor: 1000, unidade: 'W', nota: 'Motor no cubo da roda.' },
+      potencia: { valor: 1000, unidade: 'W', nota: 'Motor no cubo.' },
       autonomia: { valor: 55, unidade: 'km' },
       bateria: 'Lítio removível, 48 V 24 Ah',
       carregador: CARREGADOR,
@@ -198,6 +203,7 @@ const MODELOS = [
       suspensao: 'Hidráulica, dianteira e traseira',
       rodas: 'Aro 10, pneus 3.00-10',
       bagageiro: 'Baú traseiro',
+      protecao: 'IPX5',
       // A versão em inglês do mesmo site diz 1245 mm entre eixos; vale a em português.
       dimensoes: '1736 × 667 × 1035 mm · 1265 mm entre eixos',
       rampa: 'Até 12°',
@@ -227,10 +233,10 @@ const MODELOS = [
     preco: { valor: 10900, promo: 9900, parcelas: PARCELA_21X(608.85) },
     specs: {
       velocidade: { valor: 32, unidade: 'km/h', nota: 'Dois modos: 25 e 32 km/h.' },
-      potencia: { valor: 1000, unidade: 'W', nota: 'Motor no cubo da roda.' },
+      potencia: { valor: 1000, unidade: 'W', nota: 'Motor no cubo.' },
       autonomia: { valor: 71, unidade: 'km' },
       torque: '117 N·m',
-      bateria: 'Lítio-ferro-fosfato (LFP) removível, 60 V 30 Ah, 1.500 ciclos de recarga',
+      bateria: 'LiFePO4 (Fosfato de ferro-lítio) removível, 60 V 30 Ah, 1.500 ciclos de recarga',
       recarga: '5 horas',
       carregador: CARREGADOR,
       freios: 'Disco na frente, tambor atrás',
@@ -241,10 +247,10 @@ const MODELOS = [
       dimensoes: '1815 × 692 × 1080 mm · 1295 mm entre eixos',
       rampa: 'Até 13°',
       protecao: 'IP67',
-      conectividade: 'App YADEA por Bluetooth: conta familiar, buzina localizadora, alerta de movimento e atualização remota (OTA)',
+      conectividade: 'App YADEA',
       garantia: GARANTIA,
     },
-    equipamentos: ['Bateria removível de lítio-ferro-fosfato', 'Suspensão hidráulica na frente e atrás', 'USB de carga rápida de 15 W', 'Descanso lateral de design estável', 'Baú traseiro de 29 litros opcional'],
+    equipamentos: ['Bateria removível LiFePO4 (Fosfato de ferro-lítio)', 'Suspensão hidráulica na frente e atrás', 'USB de carga rápida de 15 W', 'Descanso lateral de design estável', 'Baú traseiro de 29 litros opcional'],
     cores: [
       { nome: 'Creme', hex: '#DCD0BA', palco: '#C8B49C', galeria: fotos('m6-h', 1, 4) },
       // Nomes corrigidos pela loja (06/11/2026): era "Cinza" e "Lilás".
@@ -269,11 +275,11 @@ const MODELOS = [
     specs: {
       // A versão em inglês do mesmo site diz 30 km/h; vale a em português (e o site atual).
       velocidade: { valor: 32, unidade: 'km/h' },
-      potencia: { valor: 1000, unidade: 'W', nota: 'Motor no cubo da roda, pico de 2.600 W.' },
+      potencia: { valor: 1000, unidade: 'W', nota: 'Motor no cubo.' },
       autonomia: { valor: 68, unidade: 'km' },
       // Torque e ciclos: folheto oficial GFX6-PT (material da loja, 06/11/2026).
       torque: '125 N·m',
-      bateria: 'Lítio-ferro-fosfato (LFP) removível, 60 V 30 Ah, 1.500 ciclos de recarga',
+      bateria: 'LiFePO4 (Fosfato de ferro-lítio) removível, 60 V 30 Ah, 1.500 ciclos de recarga',
       recarga: '5 horas',
       carregador: CARREGADOR,
       freios: 'Disco nas duas rodas: 170 mm na frente, 180 mm atrás',
@@ -284,7 +290,7 @@ const MODELOS = [
       dimensoes: '1731 × 693 × 1093 mm · 1245 mm entre eixos',
       rampa: 'Até 15°',
       protecao: 'IP67',
-      conectividade: 'App por Bluetooth, cartão NFC ou chave: conta familiar (até 5 pessoas), alerta de movimento e atualização remota (OTA)',
+      conectividade: 'App YADEA',
       garantia: GARANTIA,
     },
     equipamentos: ['Controle de descida (HDC) e de tração (TCS)', 'Controle de cruzeiro e ré com um toque', 'Painel LED de tela cheia', 'Farol LED de 4 lentes', 'Freios a disco nas duas rodas'],
@@ -330,8 +336,8 @@ const MODELOS = [
       bagageiro: 'Porta-objetos de 16 litros',
       dimensoes: '1990 × 775 × 1090 mm',
       rampa: 'Até 20°',
-      protecao: 'IPX7 na bateria',
-      conectividade: 'App YADEA por Bluetooth: conta familiar, buzina localizadora, alerta de movimento e aviso de bateria',
+      protecao: 'IPX7',
+      conectividade: 'App YADEA',
       garantia: GARANTIA,
     },
     equipamentos: ['Vencedora do prêmio Red Dot', 'Motor central com pico de 11.000 W e 300 N·m', 'Duas baterias removíveis de 72 V', 'Recuperação de energia na frenagem', 'Painel LED de 5" e entrada USB'],
@@ -357,7 +363,7 @@ const MODELOS = [
     preco: { valor: 7900, promo: 6900, parcelas: PARCELA_21X(441.28) },
     specs: {
       velocidade: { valor: 32, unidade: 'km/h' },
-      potencia: { valor: 800, unidade: 'W', nota: 'Motor no cubo da roda.' },
+      potencia: { valor: 800, unidade: 'W', nota: 'Motor no cubo.' },
       autonomia: { valor: 50, unidade: 'km' },
       torque: '80 N·m',
       bateria: 'Lítio removível, 48 V 24 Ah',
@@ -368,6 +374,7 @@ const MODELOS = [
       assento: 'A 720 mm do chão',
       dimensoes: '1565 × 685 × 1060 mm · 1105 mm entre eixos',
       rampa: 'Até 12°',
+      protecao: 'IPX5',
       garantia: GARANTIA,
     },
     equipamentos: ['Bateria removível com alça', 'Controle de descida em ladeira e de tração', 'Painel LED com a porcentagem de bateria', 'Plataforma de apoio estendida', 'Banco traseiro com encosto'],
