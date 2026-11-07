@@ -104,11 +104,11 @@ window.YADEA_GALERIAS = {
   {
    "src": "assets/img/models/owin-12.webp",
    "mini": "assets/img/models/owin-12-mini.webp",
-   "alt": "Baú de 15 litros sob o banco da Owin, com capacete dentro",
-   "w": 1146,
-   "h": 808,
-   "fundo": "#CCCFD6",
-   "estudio": true
+   "alt": "Baú sob o banco da Owin, com um capacete dentro",
+   "w": 1200,
+   "h": 800,
+   "fundo": "#413E45",
+   "estudio": false
   },
   {
    "src": "assets/img/models/owin-13.webp",

@@ -163,13 +163,15 @@ const MODELOS = [
       suspensao: 'Hidráulica, dianteira e traseira',
       rodas: 'Aro 12, pneus 90/80-12',
       assento: '640 mm de comprimento, a 780 mm do chão',
-      bagageiro: 'Baú de 15 litros sob o banco',
+      /* Baú: 30 L e até 5 kg (loja, 06/11/2026, e post da Yadea São José dos
+         Campos no Instagram). O yadea.com.br diz 15 L; a loja diz que ele erra. */
+      bagageiro: 'Baú de 30 litros sob o banco, para até 5 kg',
       dimensoes: '1770 × 665 × 1135 mm · 1290 mm entre eixos',
       rampa: 'Até 14°',
       conectividade: 'App YADEA',
       garantia: GARANTIA,
     },
-    equipamentos: ['Bateria removível: carrega em casa ou no trabalho', 'Controle de cruzeiro, ré com um toque e modos ECO e SPORT', 'Farol de 28.000 cd, com 70 m de alcance', 'Assoalho com 320 mm de extensão para os pés', 'Baú de 15 litros sob o banco'],
+    equipamentos: ['Bateria removível: carrega em casa ou no trabalho', 'Controle de cruzeiro, ré com um toque e modos ECO e SPORT', 'Farol de 28.000 cd, com 70 m de alcance', 'Assoalho com 320 mm de extensão para os pés', 'Baú de 30 litros sob o banco'],
     /* 3 cores (loja, 06/11/2026), com os renders que ela nomeou. Verde e
        vermelha batem com a amostra oficial; a cinza fica entre as duas
        amostras cinzentas do fabricante, então o hex é o medido no render. */
