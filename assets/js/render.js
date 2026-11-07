@@ -101,16 +101,32 @@ window.YADEA_RENDER = (() => {
      (YADEA_CAMPANHA.ativa): desligada, volta o preço cheio sem mexer em
      modelo nenhum. A parcela vem da loja como valor da parcela (21x de
      R$ 441,28); o objeto antigo com `total` continua aceito. */
+  /* Campanha (YADEA_CAMPANHA): vale com `ativa` e até o fim do dia `ate`, no
+     horário de Brasília (UTC−3; o Brasil não tem horário de verão desde
+     2019). Sem `ate`, vale enquanto `ativa`. O <head> da home faz a mesma
+     conta com o fim que o build grava (fimDaCampanha). */
+  function fimDaCampanha(campanha = window.YADEA_CAMPANHA) {
+    if (!campanha?.ativa) return null;
+    if (!campanha.ate) return '';
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(campanha.ate)) throw new Error(`YADEA_CAMPANHA.ate inválida: "${campanha.ate}" (use AAAA-MM-DD)`);
+    return `${campanha.ate}T23:59:59.999-03:00`;
+  }
+  function campanhaVigente(agora = Date.now()) {
+    const fim = fimDaCampanha();
+    if (fim === null) return false;
+    return fim === '' || agora <= Date.parse(fim);
+  }
   function precoDe(m) {
     const p = m?.preco;
     if (!p?.valor) return null;
     const campanha = window.YADEA_CAMPANHA;
-    const emPromo = Boolean(campanha?.ativa && p.promo && p.promo < p.valor);
+    const emPromo = Boolean(campanhaVigente() && p.promo && p.promo < p.valor);
     const parc = p.parcelas && typeof p.parcelas === 'object' ? p.parcelas : null;
     return {
       valor: emPromo ? p.promo : p.valor,
       de: emPromo ? p.valor : null,
       campanha: emPromo ? campanha.nome : null,
+      ate: emPromo ? campanha.ate || null : null,
       parcelas: parc ? {
         vezes: parc.vezes,
         valor: parc.parcela ?? parc.total / parc.vezes,
@@ -334,7 +350,7 @@ window.YADEA_RENDER = (() => {
 
   return {
     escapar, real, dinheiro, ICONE_WHATS, nomeCompleto, categoriasDe, linkWhats,
-    ordenados, selos, numeros, precoDe, parcelas, preco, eyebrow, eyebrowCurto, card, faq, palcoDe, milhar,
+    ordenados, selos, numeros, fimDaCampanha, campanhaVigente, precoDe, parcelas, preco, eyebrow, eyebrowCurto, card, faq, palcoDe, milhar,
     HEX_VALIDO, IMAGEM_LOCAL, paletaDe, fotosDaCor, slides, miniaturas, ficha,
     equipamentos, swatches, urlModelo,
   };

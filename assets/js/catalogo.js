@@ -120,10 +120,19 @@ const CARREGADOR = 'Bivolt automático, 110 V e 220 V';
    cheio, `promo` = preço da campanha, `parcelas` = como a loja mandou
    (21x de R$ 441,28, com juros: 21 × 441,28 = R$ 9.266,88 sobre os R$ 7.900
    cheios). GFX6 e Keeness não entraram na Black. A Keeness veio sem parcela.
-   Fim da campanha: `ativa: false` e rodar o build; o preço cheio volta
-   sozinho no card, no modal, nas páginas e no JSON-LD. */
+
+   CAMPANHA (Black November): vale até o fim do dia `ate` (AAAA-MM-DD,
+   horário de Brasília), e a data vale para tudo — o preço `promo` e o HERO
+   da campanha (fonte/index.html e assets/css/campanha.css), que entra no lugar do
+   hero de sempre. Passou da data, o navegador volta sozinho ao preço cheio
+   e ao hero de sempre, mesmo sem publicar; o primeiro build depois da data
+   tira a campanha também do HTML, do JSON-LD e dos llms.txt.
+     · estender ou encurtar: trocar `ate`, trocar o ?v= dos assets e rodar
+       node tools/gerar-seo.js (tabela do README);
+     · encerrar antes da data: `ativa: false` (mesmos passos).
+   Data pedida pela loja (07/11/2026): até 30/11/2026. */
 window.YADEA_PAGAMENTO = { aVista: 'PIX' };
-window.YADEA_CAMPANHA = { nome: 'Black November', ativa: true };
+window.YADEA_CAMPANHA = { nome: 'Black November', ativa: true, ate: '2026-11-30' };
 const PARCELA_21X = (parcela, extra = {}) => ({ vezes: 21, parcela, juros: true, ...extra });
 
 /* Ordem da vitrine (styleguide, seção 07). */

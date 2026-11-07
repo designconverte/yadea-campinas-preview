@@ -1105,7 +1105,9 @@
       video.play().catch(() => { /* autoplay bloqueado: o pôster fica */ });
     };
 
-    const hero = $('#hero-video');
+    /* Com o hero da campanha no ar, o de sempre está escondido: o vídeo dele
+       não baixa (catalogo.js, YADEA_CAMPANHA). */
+    const hero = document.documentElement.classList.contains('em-campanha') ? null : $('#hero-video');
     if (hero) {
       const celular = matchMedia('(max-width: 760px)').matches;
       anexar(hero, celular ? hero.dataset.srcCelular : hero.dataset.src);

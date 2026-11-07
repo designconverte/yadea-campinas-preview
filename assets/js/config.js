@@ -119,5 +119,7 @@ window.YADEA_CONFIG = {
     categoria: 'Olá! Vim pelo site e gostaria de ver as opções de {categoria} da YADEA Campinas.',
     orientacao: 'Olá! Vim pelo site e gostaria de uma orientação para escolher o modelo ideal para o meu trajeto.',
     confirmarOficial: 'Olá! Vim pelo site e quero confirmar se estou falando com o atendimento oficial da YADEA Campinas.',
+    // Botão do hero da campanha (Black November, até a data do catalogo.js).
+    black: 'Olá! Vim pelo site e quero aproveitar a Black November YADEA (Owin / DT3).',
   },
 };

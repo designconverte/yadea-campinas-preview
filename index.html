@@ -25,8 +25,27 @@
 <link rel="icon" href="assets/img/brand/icone-app-laranja.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
 
+<template id="campanha-recursos">
+<link rel="preload" as="image" href="assets/img/campanha/black-november-palco.webp" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/barlow-condensed-900i-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/dm-sans-latin-var.woff2" crossorigin>
+<link rel="preload" as="image" href="assets/img/campanha/black-november-owin.webp" crossorigin>
+<link rel="preload" as="image" href="assets/img/campanha/black-november-dt3.webp" crossorigin>
+</template>
+<script>
+  (function (h) {
+    if (!(Date.now() <= Date.parse('2026-11-30T23:59:59.999-03:00'))) return;
+    h.classList.add('em-campanha');
+    var t = document.getElementById('campanha-recursos');
+    if (t && t.content) document.head.appendChild(t.content.cloneNode(true));
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    h.classList.add('ybn-armado');
+  })(document.documentElement);
+</script>
+
 <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/yadea.css?v=1.0.7">
+<link rel="stylesheet" href="assets/css/yadea.css?v=1.0.8">
+<link rel="stylesheet" href="assets/css/campanha.css?v=1.0.8">
 
 <link rel="preload" as="image" href="assets/img/hero/hero-poster.webp" media="(min-width: 761px)" fetchpriority="high">
 <link rel="preload" as="image" href="assets/img/hero/hero-poster-vertical.webp" media="(max-width: 760px)" fetchpriority="high">
@@ -38,7 +57,7 @@
   })(document.documentElement);
 </script>
 
-<script src="assets/js/consent.js?v=1.0.7"></script>
+<script src="assets/js/consent.js?v=1.0.8"></script>
 
 <script>
   (function () {
@@ -127,6 +146,186 @@
 <main id="conteudo">
   <span id="topo"></span>
 
+    <section class="ybn" aria-labelledby="ybn-titulo">
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+      <defs>
+        <radialGradient id="ybn-selo-fundo" cx="45%" cy="40%" r="75%">
+          <stop offset="0" stop-color="#1a0703"/><stop offset=".5" stop-color="#2a0c04"/><stop offset=".78" stop-color="#551a06"/><stop offset=".93" stop-color="#8a2c0a"/><stop offset="1" stop-color="#c2470f"/>
+        </radialGradient>
+      </defs>
+    </svg>
+
+    <div class="ybn__fundo" aria-hidden="true"><div class="ybn__palco"></div></div>
+    <div class="ybn__apagao" aria-hidden="true"></div>
+
+    <div class="ybn__area">
+      <div class="ybn__cena">
+        <div class="ybn__p ybn__onze ybn__a" aria-hidden="true">11</div>
+
+        <div class="ybn__p ybn__p--titulo">
+          <div class="ybn__flash" aria-hidden="true"></div>
+          <div class="ybn__flare" aria-hidden="true"></div>
+          <div class="ybn__faiscas" aria-hidden="true"></div>
+          <div class="ybn__a">
+            <p class="ybn__eyebrow">YADEA Campinas · Edição 2026</p>
+            <h1 class="ybn__titulo" id="ybn-titulo"><span class="ybn__black">Black</span> <span class="ybn__november">November.</span></h1>
+            <p class="ybn__sub">Seu próximo passo é elétrico. <strong>Até R$ 4.000 de desconto</strong> em quatro modelos, à vista no Pix.</p>
+          </div>
+        </div>
+
+        <div class="ybn__p ybn__p--a">
+          <div class="ybn__a ybn__moto">
+            <div class="ybn__sombra" aria-hidden="true"></div>
+            <img class="ybn__img" src="assets/img/campanha/black-november-owin.webp" alt="Scooter elétrica YADEA Owin cinza" width="1000" height="836" loading="lazy" decoding="async" crossorigin="anonymous">
+            <span class="ybn__brilho ybn__brilho--moto" aria-hidden="true" style="-webkit-mask-image:url(assets/img/campanha/black-november-owin.webp);mask-image:url(assets/img/campanha/black-november-owin.webp)"></span>
+          </div>
+        </div>
+
+        <div class="ybn__p ybn__p--b">
+          <div class="ybn__a ybn__moto">
+            <div class="ybn__sombra" aria-hidden="true"></div>
+            <img class="ybn__img" src="assets/img/campanha/black-november-dt3.webp" alt="Scooter elétrica YADEA DT3 branca" width="1000" height="838" loading="lazy" decoding="async" crossorigin="anonymous">
+            <span class="ybn__brilho ybn__brilho--moto" aria-hidden="true" style="-webkit-mask-image:url(assets/img/campanha/black-november-dt3.webp);mask-image:url(assets/img/campanha/black-november-dt3.webp)"></span>
+          </div>
+        </div>
+
+        <div class="ybn__p ybn__p--selo-a">
+          <div class="ybn__a">
+            <div class="ybn-selo">
+              <svg class="ybn-selo__placa" viewBox="0 0 1000 380" aria-hidden="true" focusable="false"><path d="M36 6H872Q900 6 900 34V70Q900 98 928 98H966Q994 98 994 126V346Q994 374 966 374H34Q6 374 6 346V34Q6 6 36 6Z" fill="url(#ybn-selo-fundo)" stroke="#ffb38a" stroke-width="9"/></svg>
+              <p class="ybn-selo__texto"><span class="ybn-selo__topo">Owin com</span> <span class="ybn-selo__linha"><span class="ybn-selo__valor">R$ 4.000</span> <span class="ybn-selo__fim">off</span></span></p>
+              <span class="ybn__brilho ybn__brilho--selo" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ybn__p ybn__p--selo-b">
+          <div class="ybn__a">
+            <div class="ybn-selo">
+              <svg class="ybn-selo__placa" viewBox="0 0 1000 380" aria-hidden="true" focusable="false"><path d="M36 6H872Q900 6 900 34V70Q900 98 928 98H966Q994 98 994 126V346Q994 374 966 374H34Q6 374 6 346V34Q6 6 36 6Z" fill="url(#ybn-selo-fundo)" stroke="#ffb38a" stroke-width="9"/></svg>
+              <p class="ybn-selo__texto"><span class="ybn-selo__topo">DT3 com</span> <span class="ybn-selo__linha"><span class="ybn-selo__valor">R$ 2.000</span> <span class="ybn-selo__fim">off</span></span></p>
+              <span class="ybn__brilho ybn__brilho--selo" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ybn__p ybn__p--cta">
+          <div class="ybn__a">
+            <a class="ybn__cta" data-whats="black" data-origem="hero_black" href="https://wa.me/5519998468303?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20aproveitar%20a%20Black%20November%20YADEA%20(Owin%20%2F%20DT3)." target="_blank" rel="noopener" aria-label="Quero minha YADEA na Black November: falar no WhatsApp da loja (abre em nova aba)">
+              <span class="ybn__cta-corpo">
+                <span class="ybn__cta-textos">
+                  <span class="ybn__cta-titulo">Quero minha Yadea</span>
+                  <span class="ybn__cta-sub">Falar no WhatsApp da loja</span>
+                </span>
+                <span class="ybn__cta-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+                <span class="ybn__brilho ybn__brilho--cta" aria-hidden="true"></span>
+              </span>
+              <svg class="ybn__neon" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path class="ybn__neon-traco" pathLength="100" d="M0 0H96L100 6V100H0Z"/>
+                <path class="ybn__neon-cometa" pathLength="100" d="M0 0H96L100 6V100H0Z"/>
+              </svg>
+            </a>
+            <p class="ybn__outros">Também em oferta: <span>M6-H e GB60 com até R$ 1.000 off</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    (function () {
+      'use strict';
+      var ESPERA_MAX_MS = 2500;
+      var TARDE_MS = 4500;
+      var FIM_MS = 4400;
+      var inicio = performance.now();
+      var html = document.documentElement;
+      var raiz = document.querySelector('.ybn');
+      if (!raiz || !html.classList.contains('em-campanha')) return;
+
+      function desarmar() {
+        html.classList.remove('ybn-armado');
+        raiz.classList.remove('is-tocando');
+      }
+
+      function criarFaiscas() {
+        var caixa = raiz.querySelector('.ybn__faiscas');
+        if (!caixa || caixa.firstChild) return;
+        var semente = 7;
+        function sorte() { semente = (semente * 16807) % 2147483647; return semente / 2147483647; }
+        for (var i = 0; i < 22; i++) {
+          var x = 12 + sorte() * 76;
+          var y = 22 + sorte() * 46;
+          var ang = Math.atan2(y - 45, x - 50) + (sorte() - 0.5) * 1.1;
+          var dist = 30 + sorte() * 80;
+          var tam = (2 + sorte() * 3.5).toFixed(1);
+          var f = document.createElement('span');
+          if (i % 3 === 0) f.className = 'is-clara';
+          f.style.cssText = 'left:' + x + '%;top:' + y + '%;width:' + tam + 'px;height:' + tam + 'px;'
+            + '--dx:' + (Math.cos(ang) * dist).toFixed(1) + 'px;--dy:' + (Math.sin(ang) * dist - 10).toFixed(1) + 'px;'
+            + 'animation-duration:' + Math.round(700 + sorte() * 600) + 'ms;animation-delay:' + Math.round(1030 + sorte() * 160) + 'ms';
+          caixa.appendChild(f);
+        }
+      }
+
+      function decodificar(img) {
+        return img.decode ? img.decode().catch(function () {}) : Promise.resolve();
+      }
+
+      function pronto() {
+        var esperas = Array.prototype.map.call(raiz.querySelectorAll('img'), decodificar);
+        var palco = raiz.querySelector('.ybn__palco');
+        var url = palco && getComputedStyle(palco).backgroundImage.match(/url\(["']?(.*?)["']?\)/);
+        if (url) {
+          var img = new Image();
+          img.src = url[1];
+          esperas.push(decodificar(img));
+        }
+        if (document.fonts && document.fonts.load) {
+          ['italic 900 1em "Barlow Condensed"', '500 1em "DM Sans"', '800 1em "DM Sans"'].forEach(function (fonte) {
+            esperas.push(document.fonts.load(fonte).catch(function () {}));
+          });
+        }
+        var todas = Promise.all(esperas).then(function () { return true; });
+        var limite = new Promise(function (ok) { setTimeout(function () { ok(false); }, ESPERA_MAX_MS); });
+        return Promise.race([todas, limite]);
+      }
+
+      function quandoVisivel(fn) {
+        function observar() {
+          if (!('IntersectionObserver' in window)) { fn(); return; }
+          var io = new IntersectionObserver(function (entradas) {
+            if (entradas.some(function (e) { return e.isIntersecting; })) { io.disconnect(); fn(); }
+          }, { threshold: 0.2 });
+          io.observe(raiz);
+        }
+        if (document.visibilityState !== 'hidden') { observar(); return; }
+        document.addEventListener('visibilitychange', function aoVoltar() {
+          if (document.visibilityState === 'hidden') return;
+          document.removeEventListener('visibilitychange', aoVoltar);
+          observar();
+        });
+      }
+
+      function tocar() {
+        if (!html.classList.contains('ybn-armado')) return;
+        if (performance.now() - inicio > TARDE_MS) { desarmar(); return; }
+        raiz.classList.add('is-tocando');
+        setTimeout(desarmar, FIM_MS);
+      }
+
+      try {
+        if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { desarmar(); return; }
+        if (!html.classList.contains('ybn-armado')) return;
+        criarFaiscas();
+        quandoVisivel(function () {
+          pronto().then(function (aTempo) { if (aTempo) tocar(); else desarmar(); }, desarmar);
+        });
+      } catch (erro) {
+        desarmar();
+      }
+    })();
+  </script>
+  
   <section class="hero" aria-labelledby="hero-titulo">
     <div class="hero__midia" aria-hidden="true">
       <picture>
@@ -1005,16 +1204,16 @@
   <p class="lightbox__contador" id="lightbox-contador" aria-live="polite"></p>
 </div>
 
-<script src="assets/js/tracking.js?v=1.0.7"></script>
-<script src="assets/js/config.js?v=1.0.7"></script>
-<script src="assets/js/galerias.js?v=1.0.7"></script>
-<script src="assets/js/catalogo.js?v=1.0.7"></script>
-<script src="assets/js/render.js?v=1.0.7"></script>
-<script src="assets/js/app.js?v=1.0.7"></script>
+<script src="assets/js/tracking.js?v=1.0.8"></script>
+<script src="assets/js/config.js?v=1.0.8"></script>
+<script src="assets/js/galerias.js?v=1.0.8"></script>
+<script src="assets/js/catalogo.js?v=1.0.8"></script>
+<script src="assets/js/render.js?v=1.0.8"></script>
+<script src="assets/js/app.js?v=1.0.8"></script>
 
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/vendor/lenis.min.js" defer></script>
-<script src="assets/js/motion.js?v=1.0.7" defer></script>
+<script src="assets/js/motion.js?v=1.0.8" defer></script>
 </body>
 </html>

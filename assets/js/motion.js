@@ -108,7 +108,8 @@
 
   function hero() {
     // Página do modelo não tem hero: sem isto o GSAP avisa "target not found".
-    if (!document.querySelector('.hero')) return;
+    // Com o hero da campanha no ar, o de sempre está escondido (o motor embutido no index anima o outro).
+    if (!document.querySelector('.hero') || document.documentElement.classList.contains('em-campanha')) return;
     const titulo = document.querySelector('[data-anima-linhas]');
     if (titulo) {
       /* Cada linha (separada por <br>) vira uma máscara. O <span> do
