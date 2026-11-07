@@ -181,6 +181,14 @@
   color: #ebd6c9;
 }
 .ybn__eyebrow::before { content: ""; display: block; flex: none; width: 6cqi; height: 2px; background: #ff6728; }
+/* Prazo da oferta ({{campanha-ate}}: a mesma data do hero e do preço). */
+.ybn__prazo { color: #ffa16e; }
+/* Celular pequeno (coluna do título < 270 px, ex.: 360×640 e 375×667): a
+   fonte já está no mínimo de 9 px e "YADEA Campinas · Válido até 30/11"
+   passava a coluna em até 35 px. Só o espaçamento cede (igual ao CTA). */
+@container (max-width: 270px) {
+  .ybn__eyebrow { letter-spacing: .12em; }
+}
 
 .ybn__titulo {
   margin: 0;
