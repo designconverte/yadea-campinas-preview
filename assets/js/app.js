@@ -477,7 +477,7 @@
           return;
         }
 
-        const comprar = e.target.closest('.card a[href*="wa.me"]');
+        const comprar = e.target.closest('.card a[href*="api.whatsapp.com"]');
         if (comprar) {
           const cartao = comprar.closest('.card');
           comprar.dataset.rastreado = '1'; // já contado aqui, não repetir na delegação
@@ -957,7 +957,7 @@
         if (m) location.href = new URL(R.urlModelo(m), document.baseURI).href;
         return;
       }
-      const comprar = e.target.closest('.card a[href*="wa.me"]');
+      const comprar = e.target.closest('.card a[href*="api.whatsapp.com"]');
       if (comprar) {
         comprar.dataset.rastreado = '1';
         interesseNoModelo(doCard(comprar), 'comparar');
@@ -1023,7 +1023,7 @@
         modal.abrir(btn.dataset.detalhes, btn);
         return;
       }
-      const comprar = e.target.closest('a[href*="wa.me"][data-modelo]');
+      const comprar = e.target.closest('a[href*="api.whatsapp.com"][data-modelo]');
       if (comprar) {
         comprar.dataset.rastreado = '1';
         interesseNoModelo((window.YADEA_MODELOS || []).find((m) => m.id === comprar.dataset.modelo), comprar.dataset.origem || 'destaque');

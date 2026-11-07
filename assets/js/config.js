@@ -41,7 +41,8 @@ window.YADEA_CONFIG = {
   },
 
   /* Vendas e assistência usam o mesmo número no site atual.
-     `numero` é só para exibição; `e164` é o que entra no link wa.me. */
+     `numero` é só para exibição; `e164` é o que entra no link do WhatsApp
+     (api.whatsapp.com/send, por causa do gatilho do GTM: ver render.js). */
   whatsapp: {
     numero: '(19) 99846-8303',
     e164: '5519998468303',

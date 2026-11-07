@@ -29,7 +29,11 @@ window.YADEA_RENDER = (() => {
   const nomeCompleto = (m) => [m.fabricante, m.nome].filter(Boolean).join(' ');
   const categoriasDe = (m) => m.categorias || (m.categoria ? [m.categoria] : []);
 
-  /** Monta o link do WhatsApp com a mensagem já preenchida. */
+  /** Monta o link do WhatsApp com a mensagem já preenchida.
+      Formato api.whatsapp.com/send (o destino final do wa.me), NÃO wa.me: a
+      conversão de WhatsApp das duas contas do Google Ads no GTM-5QG7S2H6
+      (container v10, conferido em 07/11/2026) dispara em clique de link cuja
+      URL contém "api.whatsapp". Com wa.me o site novo não contaria nenhuma. */
   function linkWhats(chave, trocas = {}) {
     const cfg = window.YADEA_CONFIG;
     let texto = cfg.mensagens[chave] || cfg.mensagens.geral;
@@ -39,7 +43,7 @@ window.YADEA_RENDER = (() => {
     const prefixo = cfg.prefixoMensagem;
     if (prefixo && !texto.toLowerCase().startsWith(prefixo.toLowerCase())) texto = `${prefixo}. ${texto}`;
     const numero = chave === 'assistencia' ? (cfg.assistencia?.e164 || cfg.whatsapp.e164) : cfg.whatsapp.e164;
-    return `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+    return `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(texto)}`;
   }
 
   /* Ordem da vitrine: YADEA_ORDEM primeiro, o resto na ordem do catálogo. */
