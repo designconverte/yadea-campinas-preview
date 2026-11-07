@@ -147,6 +147,9 @@
       consent: { analytics: consent.analytics, ad: consent.ad },
       fbp: lerCookie('_fbp'),
       fbc: lerCookie('_fbc'),
+      // O GA4 que já foi pelo caminho 1: o servidor não repassa para ele (o
+      // GA4 não deduplica navegador × Measurement Protocol). Ver e.php.
+      ga4_navegador: document.documentElement.dataset.ga4 || '',
     });
   }
 
